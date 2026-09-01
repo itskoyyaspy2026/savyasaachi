@@ -8,9 +8,50 @@ from datetime import datetime, time
 # --- PAGE SETUP ---
 st.set_page_config(page_title="SAVYASAACHI PaaS", page_icon="🎯", layout="wide")
 
-st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
-st.markdown("### *Multi-Vertical Epistemic Risk & Quantitative Projections Platform*")
+st.title("🎯 SAVYASAACHI Election Intelligence Platform")
+st.markdown("### *Cognitive Election Intelligence • Syādvāda • Error Taxonomy*")
 st.write("---")
+
+
+# --- SAVYASAACHI NAVIGATION ---
+st.markdown("""
+<style>
+    .block-container { max-width: 1500px; padding-top: 1rem; }
+    [data-testid="stSidebar"] { min-width: 290px; max-width: 340px; }
+    .nav-note {
+        padding: .7rem .9rem;
+        border: 1px solid rgba(128,128,128,.25);
+        border-radius: 10px;
+        margin-bottom: .8rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+st.sidebar.markdown("## 🎯 SAVYASAACHI")
+st.sidebar.caption("Election Intelligence • Cognitive Engine")
+
+page = st.sidebar.radio(
+    "NAVIGATION",
+    [
+        "🏠 Command Center",
+        "🧠 Cognitive Engine",
+        "📡 Signal Intelligence",
+        "⚠️ Error Taxonomy",
+        "🔱 Saptabhaṅgī",
+        "🗺️ Constituency Intelligence",
+        "🌍 Ground Verification",
+        "📊 Synthesis & Forecast",
+        "⚙️ Engine Governance",
+    ],
+    index=0,
+)
+
+st.sidebar.markdown("---")
+st.sidebar.caption("Machine first → Database second → Integration → Validation")
+
+# The existing controls remain available on the Command Center and engine pages.
+if page != "🏠 Command Center":
+    st.info(f"**{page}** — navigation shell is active. The existing processing engine remains available below while each module is separated into its own screen.")
 
 # --- SIDEBAR CONTROLS ---
 st.sidebar.header("🎛️ Control Panel")
