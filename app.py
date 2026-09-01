@@ -9,7 +9,7 @@ from datetime import datetime, time
 st.set_page_config(page_title="SAVYASAACHI PaaS", page_icon="🎯", layout="wide")
 
 st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
-st.markdown("### *Multi-Vertical Epistemic Risk & Quantitative Projections Platform*")
+st.markdown("### *Multi-Vertical Epistemic Risk & BPHS Astrological Alignment Platform*")
 st.write("---")
 
 # --- SIDEBAR CONTROLS ---
@@ -21,13 +21,14 @@ industry = st.sidebar.selectbox(
 
 # --- DYNAMIC MATRIX INPUT FIELDS ---
 st.sidebar.write("---")
-st.sidebar.header("📝 Target Metadata Inputs")
+st.sidebar.header("¼️ Target Metadata Inputs")
 
+# Astrological Flag Initializer
 astro_enabled = False
 
 if industry == "ELECTIONS":
     target_name = st.sidebar.text_input("Enter Party Name (e.g., BRS, TVK, BJP)", value="BRS")
-    leader_name = st.sidebar.text_input("Enter Leader Name", value="KCR")
+    leader_name = st.sidebar.text_input("Enter Party Leader Name", value="KCR")
     country = st.sidebar.text_input("Country", value="India")
     state_selected = st.sidebar.selectbox("State", ["Telangana", "Tamil Nadu", "West Bengal", "Karnataka", "Andhra Pradesh", "Maharashtra", "Other"])
     election_year = st.sidebar.text_input("Election Year", value="2028")
@@ -42,7 +43,7 @@ if industry == "ELECTIONS":
         dob = st.sidebar.date_input("Leader Date of Birth", value=datetime(1954, 2, 17))
         tob = st.sidebar.time_input("Leader Time of Birth", value=time(10, 30))
         pob = st.sidebar.text_input("Leader Place of Birth", value="Chintamadaka, Telangana")
-    
+
 elif industry == "MEDIA_MOVIES":
     target_name = st.sidebar.text_input("Enter Movie Title", value="Varanasi")
     hero_name = st.sidebar.text_input("Enter Lead Hero Name", value="Mahesh Babu")
@@ -50,7 +51,7 @@ elif industry == "MEDIA_MOVIES":
     movie_distribution = st.sidebar.selectbox("Release Scale Strategy", ["GLOBAL EPIC", "PAN-INDIA COMMERCIAL", "REGIONAL SPECIFIC"])
     movie_censor = st.sidebar.selectbox("Censor Certificate", ["STRICT 'A' CERTIFICATE (Adult Noir)", "U/A or U CERTIFICATE (Clean Family)"])
     context_focus = f"Language: {movie_lang} | Scale: {movie_distribution} | Censor: {movie_censor}"
-
+    
     st.sidebar.write("---")
     st.sidebar.subheader("🕉️ BPHS Hero Chart Alignment")
     astro_enabled = st.sidebar.checkbox("Enable Hero Astrological Audit", value=True)
@@ -66,7 +67,7 @@ elif industry == "SPORTS_AUCTIONS":
     country = st.sidebar.text_input("Country Hub", value="India")
     pitch_profile = st.sidebar.selectbox("Ground / Pitch Friction Profile", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
     context_focus = f"Sport: {sport_type} | Country: {country} | Environment: {pitch_profile}"
-
+    
     st.sidebar.write("---")
     st.sidebar.subheader("🕉️ BPHS Captain Chart Alignment")
     astro_enabled = st.sidebar.checkbox("Enable Captain Astrological Audit", value=True)
@@ -76,12 +77,12 @@ elif industry == "SPORTS_AUCTIONS":
         pob = st.sidebar.text_input("Captain Place of Birth", value="Nagpur, Maharashtra")
 
 elif industry == "GOVERNMENT_POLICY":
-    target_name = st.sidebar.text_input("Enter Competitive Exam Name (e.g., NEET, UPSC)", value="NEET-UG")
+    target_name = st.sidebar.text_input("Enter Competitive Exam Name", value="NEET-UG")
     exam_year = st.sidebar.text_input("Exam Year", value="2026")
     context_focus = f"Exam Matrix: {target_name} | Target Cycle Year: {exam_year}"
 
 elif industry == "DISASTER_MANAGEMENT":
-    target_name = st.sidebar.text_input("Enter Disaster Type (e.g., Flash Floods, Cyclone)", value="Flash Floods")
+    target_name = st.sidebar.text_input("Enter Disaster Type", value="Flash Floods")
     country = st.sidebar.text_input("Country", value="Nepal")
     state_selected = st.sidebar.text_input("State / Zone", value="Bagmati Province")
     region_type = st.sidebar.text_input("Specific Region Coordinates", value="Kavre Mountainside Grid-14")
@@ -109,29 +110,29 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# 7-Fold Saptabhangi Decision Routing Logic
+# Saptabhaṅgī Decision Routing Logic
 if is_manipulated and structural_contradiction > 0.5:
-    engine_state = "Syad_Avaktavyam"
+    state = "Syād_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
     weight_modifier = 0.02
 elif affirmation_score >= 0.5 and is_manipulated:
-    engine_state = "Syad_Asti_Avaktavyam"
+    state = "Syād_Asti_Avaktavyam"
     action = f"⚠️ ISOLATE CORE TRUTH FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.20
 elif negation_score >= 0.5 and is_manipulated:
-    engine_state = "Syad_Nasti_Avaktavyam"
+    state = "Syād_Nasti_Avaktavyam"
     action = f"⚠️ ISOLATE REVERSAL CORE FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.15
 elif affirmation_score >= 0.5 and negation_score >= 0.5:
-    engine_state = "Syad_Asti_Nasti"
+    state = "Syād_Asti_Nasti"
     action = f"🌗 SPLIT CURRENT SPECTRUM: BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
     weight_modifier = 0.50
 elif negation_score >= 0.5:
-    engine_state = "Syad_Nasti"
+    state = "Syād_Nasti"
     action = f"📉 DOWNWARD WAVE: EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 else:
-    engine_state = "Syad_Asti"
+    state = "Syād_Asti"
     action = f"📈 UPWARD WAVE: CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 
@@ -145,12 +146,12 @@ with col1:
     st.write(f"**Target System Instance:** `{target_name.upper()}`")
     st.write(f"📊 *Matrix Track:* `{context_focus}`")
     
-    if engine_state == "Syad_Avaktavyam" or engine_state == "Syad_Nasti":
-        st.error(f"Current Standpoint: {engine_state}")
-    elif "Avaktavyam" in engine_state:
-        st.warning(f"Current Standpoint: {engine_state}")
+    if state == "Syād_Avaktavyam" or state == "Syād_Nasti":
+        st.error(f"Current Standpoint: {state}")
+    elif "Avaktavyam" in state:
+        st.warning(f"Current Standpoint: {state}")
     else:
-        st.success(f"Current Standpoint: {engine_state}")
+        st.success(f"Current Standpoint: {state}")
         
     st.info(f"**Engine Protocol Directives:**\n{action}")
     st.metric(label="Computed Epistemic Data Weight (Clean Mass)", value=f"{int(computed_mass)} units")
@@ -160,23 +161,23 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
-    if engine_state == "Syad_Avaktavyam":
+    if state == "Syād_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
-        sizes = [15, 85]
+        sizes = [5, 95]
         colors = ['#ced4da', '#dc3545']
-    elif engine_state == "Syad_Asti_Avaktavyam":
+    elif state == "Syād_Asti_Avaktavyam":
         labels = ['Core Ground Affirmation', 'Unverified Cloud Wrapper']
-        sizes = [65, 35]
+        sizes = [30, 70]
         colors = ['#28a745', '#dc3545']
-    elif engine_state == "Syad_Nasti_Avaktavyam":
+    elif state == "Syād_Nasti_Avaktavyam":
         labels = ['Core Ground Negation', 'Unverified Cloud Wrapper']
-        sizes = [60, 40]
+        sizes = [25, 75]
         colors = ['#dc3545', '#ced4da']
-    elif engine_state == "Syad_Asti_Nasti":
+    elif state == "Syād_Asti_Nasti":
         labels = ['Affirmation (Asti)', 'Negation (Nasti)', 'Residual Noise']
         sizes = [45, 45, 10]
         colors = ['#28a745', '#dc3545', '#ffc107']
-    elif engine_state == "Syad_Asti":
+    elif state == "Syād_Asti":
         labels = ['Grounded Affirmation Base', 'System Noise Floor']
         sizes = [90, 10]
         colors = ['#28a745', '#ced4da']
@@ -193,4 +194,6 @@ with col2:
 st.write("---")
 st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
 
-# RESTORED: This is your explicit generation button layer right here!
+if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
+    st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
+    
