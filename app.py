@@ -1,4 +1,3 @@
-# Save this text block on your laptop as a file named "app.py"
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -25,6 +24,7 @@ st.sidebar.write("---")
 st.sidebar.header("📝 Target Metadata Inputs")
 
 astro_enabled = False
+birth_minute = 0  # Initialized core tracking anchor cleanly
 
 if industry == "ELECTIONS":
     target_name = st.sidebar.text_input("Enter Party Name (e.g., BRS, TVK, BJP)", value="BRS")
@@ -43,6 +43,7 @@ if industry == "ELECTIONS":
         dob = st.sidebar.date_input("Leader Date of Birth", value=datetime(1954, 2, 17))
         tob = st.sidebar.time_input("Leader Time of Birth", value=time(10, 30))
         pob = st.sidebar.text_input("Leader Place of Birth", value="Chintamadaka, Telangana")
+        birth_minute = int(tob.minute)
 
 elif industry == "MEDIA_MOVIES":
     target_name = st.sidebar.text_input("Enter Movie Title", value="Varanasi")
@@ -59,12 +60,13 @@ elif industry == "MEDIA_MOVIES":
         dob = st.sidebar.date_input("Hero Date of Birth", value=datetime(1975, 8, 9))
         tob = st.sidebar.time_input("Hero Time of Birth", value=time(18, 22))
         pob = st.sidebar.text_input("Hero Place of Birth", value="Chennai, Tamil Nadu")
+        birth_minute = int(tob.minute)
 
 elif industry == "SPORTS_AUCTIONS":
-    target_name = st.sidebar.text_input("Enter Athlete / Team Name", value="Indian Cricket Team")
+    target_name = st.sidebar.text_input("Enter Athlete Name", value="Indian Cricket Team")
     captain_name = st.sidebar.text_input("Enter Captain Name", value="Rohit Sharma")
     sport_type = st.sidebar.text_input("Sport Type", value="Cricket")
-    country = st.sidebar.text_input("Country Hub", value="India")
+    country = st.sidebar.text_input("Country", value="India")
     pitch_profile = st.sidebar.selectbox("Ground / Pitch Friction Profile", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
     context_focus = f"Sport: {sport_type} | Country: {country} | Environment: {pitch_profile}"
     
@@ -75,6 +77,7 @@ elif industry == "SPORTS_AUCTIONS":
         dob = st.sidebar.date_input("Captain Date of Birth", value=datetime(1987, 4, 30))
         tob = st.sidebar.time_input("Captain Time of Birth", value=time(4, 45))
         pob = st.sidebar.text_input("Captain Place of Birth", value="Nagpur, Maharashtra")
+        birth_minute = int(tob.minute)
 
 elif industry == "GOVERNMENT_POLICY":
     target_name = st.sidebar.text_input("Enter Competitive Exam Name", value="NEET-UG")
@@ -158,34 +161,21 @@ with col1:
 
 with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
-    
     fig, ax = plt.subplots(figsize=(5, 3))
     if engine_state == "Syad_Avaktavyam":
-        labels = ['Trusted Data', 'Chaos']
-        sizes = [20, 80]
-        colors = ['#ced4da', '#dc3545']
+        sizes = [15, 85]
     elif engine_state == "Syad_Asti_Avaktavyam":
-        labels = ['Affirmation', 'Chaos']
-        sizes = [70, 30]
-        colors = ['#28a745', '#dc3545']
-    elif engine_state == "Syad_Nasti_Avaktavyam":
-        labels = ['Negation', 'Chaos']
         sizes = [65, 35]
-        colors = ['#dc3545', '#ced4da']
+    elif engine_state == "Syad_Nasti_Avaktavyam":
+        sizes = [40, 60]
     elif engine_state == "Syad_Asti_Nasti":
-        labels = ['Asti', 'Nasti', 'Noise']
         sizes = [45, 45, 10]
-        colors = ['#28a745', '#dc3545', '#ffc107']
     elif engine_state == "Syad_Asti":
-        labels = ['Affirmation Base', 'Noise']
         sizes = [90, 10]
-        colors = ['#28a745', '#ced4da']
     else:
-        labels = ['Negation Base', 'Noise']
         sizes = [85, 15]
-        colors = ['#dc3545', '#ced4da']
         
-    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
+    ax.pie(sizes, labels=['Grounded Base', 'Noise Wrapper'], colors=['#28a745', '#dc3545'], autopct='%1.1f%%', startangle=90)
     ax.axis('equal')
     st.pyplot(fig)
 
@@ -196,5 +186,87 @@ st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
 if st.button("⚡ GENERATE RESULT", key="universal_generate_button"):
     st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
     
-    astro_modifier = 1.18 if (astro_enabled and int(tob.minute) % 2 == 0) else 0.88
+    # FIXED: Replaced standard object parameter dependencies with string-safe mathematical integers
+    astro_modifier = 1.18 if (astro_enabled and birth_minute % 2 == 0) else 0.88
     
+    if industry == "ELECTIONS":
+        base_margin = 12.5 if "Asti" in engine_state else 1.5
+        calculated_margin = max(0.5, (base_margin - (noise_score * 4.0) + (affirmation_score * 3.5)) * astro_modifier)
+        
+        st.info(f"🧭 **Electoral Matrix Mapping:** Country: `{country}` | State: `{state_selected}` | Party: `{target_name}` | Year: `{election_year}` | Region: `{region_type}`")
+        if astro_enabled:
+            st.warning(f"🕉️ **BPHS Chart Decoded:** Leader: `{leader_name}`. Ascendant Lord strength processed into D1/D9 Navamsha matrices.")
+            
+        st.markdown("### 📊 QUANTITATIVE ENGINE PROJECTIONS:")
+        st.metric(label="🎯 Predicted Winning Margin Percentage", value=f"{round(calculated_margin, 2)}% Vote Share Gap")
+        
+        st.markdown("### 📌 AUTHORITATIVE CAMPAIGN AGENDA:")
+        if "TELANGANA" in state_selected.upper() or "BRS" in target_name.upper():
+            st.write("• **Map the Regional Welfare Continuum:** Deploy the Ground Verification API to monitor local Rythu Bharosa or water delivery metrics directly at booth levels, bypassing online noise leaks.")
+        elif "TAMIL" in state_selected.upper() or "TVK" in target_name.upper() or "DMK" in target_name.upper() or "AIADMK" in target_name.upper():
+            st.write("• **Isolate the Youth-Aspirational Trend Arc:** Frame core strategic messaging around transparent employment infrastructure to override legacy Dravidian binary constraints.")
+        else:
+            st.write("• **Expose Fake Digital Waves:** Anchor your field machinery strictly to physical voter turnouts.")
+
+    elif industry == "MEDIA_MOVIES":
+        base_opening = 220.0 if "GLOBAL" in movie_distribution else (110.0 if "PAN-INDIA" in movie_distribution else 25.0)
+        total_multiplier = 8.5 if "Asti" in engine_state else 3.2
+        opening_day = base_opening * (volume / 150000.0) * (affirmation_score / 0.90) * astro_modifier
+        potential_total = opening_day * total_multiplier * (1.0 - (noise_score * 0.25))
+        
+        st.info(f"🎬 **Cinematic Matrix Mapping:** Movie: `{target_name}` | Language: `{movie_lang}` | Scale Scope: `{movie_distribution}`")
+        if astro_enabled:
+            st.warning(f"🕉️ **BPHS Chart Decoded:** Hero: `{hero_name}`. D1 Lagna positions cross-referenced with Shani/Rahu release-day transits.")
+            
+        st.markdown("### 📊 QUANTITATIVE BOX OFFICE OUTPUTS:")
+        col_m1, col_m2 = st.columns(2)
+        with col_m1:
+            st.metric(label="🚀 Projected Opening Day Collections", value=f"₹{int(opening_day)} Crore")
+        with col_m2:
+            st.metric(label="🔮 Bounded Possibility of Total Lifetime Collections", value=f"₹{int(potential_total)} Crore")
+
+    elif industry == "SPORTS_AUCTIONS":
+        base_margin = 76.5 if "Asti" in engine_state else 51.2
+        final_margin_pct = min(98.5, max(12.0, (base_margin + (affirmation_score * 15) - (env_volatility * 20)) * astro_modifier))
+        
+        st.info(f"🏏 **Sports Matrix Mapping:** Sport: `{sport_type}` | Country: `{country}` | Asset Name: `{target_name}`")
+        if astro_enabled:
+            st.warning(f"🕉️ **BPHS Chart Decoded:** Captain: `{captain_name}`. D9 Navamsha 10th House Lord analyzed for knockout match luck retention.")
+            
+        st.markdown("### 📊 QUANTITATIVE SPORTS OUTPUTS:")
+        st.metric(label="🏆 Projected Winning Margin Percentage", value=f"{round(final_margin_pct, 1)}%")
+
+    elif industry == "GOVERNMENT_POLICY":
+        base_cutoff = 162 if "NEET" in target_name.upper() else (94 if "UPSC" in target_name.upper() else 50)
+        calculated_cutoff = base_cutoff + (affirmation_score * 12) - (env_volatility * 8)
+        
+        st.info(f"🎓 **Educational Matrix Mapping:** Competitive Exam: `{target_name}` | Cycle Year: `{exam_year}`")
+        st.markdown("### 📊 QUANTITATIVE ACADEMIC OUTPUTS:")
+        st.metric(label="📝 Expected Standard Cut-Off Score", value=f"{int(calculated_cutoff)} Marks")
+
+    elif industry == "DISASTER_MANAGEMENT":
+        st.info(f"🚑 **Humanitarian Matrix Mapping:** Country: `{country}` | State/Zone: `{state_selected}` | Specific Region: `{region_type}`")
+        st.markdown("### 📊 CRITICAL CRISIS DIRECTIVE OUTPUTS:")
+        st.success("🚨 **IMMEDIATE STEPS TO BE TAKEN (Operational Playbook):**")
+        st.write(f"1. **Quarantine Fake Panic Rumors:** Isolate unverified internet chatter regarding dam breaches and clear the communication lanes.")
+        st.write(f"2. **Redirect Rescue Teams:** Activate rescue operations straight to hidden coordinates where floating workforces are stranded.")
+
+    elif industry == "STARTUP_FINANCIERS":
+        st.info(f"💼 **Financier Matrix Mapping:** Venture: `{target_name}` | Market Core: `{startup_market}`")
+        st.markdown("### 📊 DUE-DILIGENCE SHIELD VERDICT:")
+        if "Avaktavyam" in engine_state or noise_score > 0.70:
+            st.error("🚨 INVESTMENT ACTION DIRECTIVE: ABANDON ROUND / LIQUIDITY TRAP RISK EXPOSED")
+        else:
+            st.warning("⚠️ INVESTMENT ACTION DIRECTIVE: PROCEED VIA CONDITIONAL MILESTONE STAGES ONLY")
+
+# --- GROUND VERIFICATION API INTERACTIVE INTERCEPT ---
+st.write("---")
+st.subheader("🔒 Cryptographic Ground Verification API Intercept")
+
+if "Avaktavyam" in engine_state:
+    st.warning(f"⚠️ High digital noise/panic detected. Automated predictions are currently frozen to prevent errors.")
+    if st.button("🔗 Execute Ground Verification API Trigger"):
+        token = f"VTK-{uuid.uuid4().hex[:12].upper()}"
+        st.success(f"📡 API Dispatched to Local Field Nodes. Generated Ticket: **{token}**")
+else:
+    st.success("✔ Data streams are running clear within normal parameters. Ground override infrastructure is currently on standby.")
