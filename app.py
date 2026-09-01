@@ -99,7 +99,7 @@ volume = st.sidebar.slider("Incoming Data Volume (Signals)", 1000, 500000, 15000
 env_volatility = st.sidebar.slider("Environmental Volatility Index", 0.0, 1.0, 0.75, step=0.05)
 
 st.sidebar.write("---")
-st.sidebar.header("🚨 Adversarial Attack Simulator")
+st.sidebar.header("Adversarial Attack Simulator")
 noise_score = st.sidebar.slider("Bot / Social Media Manipulation Score", 0.0, 1.0, 0.85, step=0.05)
 affirmation_score = st.sidebar.slider("Online Affirmation (Hype / SOS)", 0.0, 1.0, 0.90, step=0.05)
 negation_score = st.sidebar.slider("Online Negation (Review-Bomb / Panic)", 0.0, 1.0, 0.80, step=0.05)
@@ -109,30 +109,30 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# Saptabhaṅgī Decision Routing Logic
+# Saptabhangi Decision Routing Logic
 if is_manipulated and structural_contradiction > 0.5:
-    state = "Syād_Avaktavyam"
+    state = "Syad_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
     weight_modifier = 0.02
 elif affirmation_score >= 0.5 and is_manipulated:
-    state = "Syād_Asti_Avaktavyam"
+    state = "Syad_Asti_Avaktavyam"
     action = f"⚠️ ISOLATE CORE TRUTH FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.20
 elif negation_score >= 0.5 and is_manipulated:
-    state = "Syād_Nasti_Avaktavyam"
+    state = "Syad_Nasti_Avaktavyam"
     action = f"⚠️ ISOLATE REVERSAL CORE FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.15
 elif affirmation_score >= 0.5 and negation_score >= 0.5:
-    state = "Syād_Asti_Nasti"
-    action = f"🌗 SPLIT CURRENT SPECTRUM: BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
+    state = "Syad_Asti_Nasti"
+    action = f"BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
     weight_modifier = 0.50
 elif negation_score >= 0.5:
-    state = "Syād_Nasti"
-    action = f"📉 DOWNWARD WAVE: EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
+    state = "Syad_Nasti"
+    action = f"EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 else:
-    state = "Syād_Asti"
-    action = f"📈 UPWARD WAVE: CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
+    state = "Syad_Asti"
+    action = f"CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 
 computed_mass = volume * weight_modifier
@@ -145,7 +145,7 @@ with col1:
     st.write(f"**Target System Instance:** `{target_name.upper()}`")
     st.write(f"📊 *Matrix Track:* `{context_focus}`")
     
-    if state == "Syād_Avaktavyam" or state == "Syād_Nasti":
+    if state == "Syad_Avaktavyam" or state == "Syad_Nasti":
         st.error(f"Current Standpoint: {state}")
     elif "Avaktavyam" in state:
         st.warning(f"Current Standpoint: {state}")
@@ -160,23 +160,23 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
-    if state == "Syād_Avaktavyam":
+    if state == "Syad_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
         sizes = [15, 85]
         colors = ['#ced4da', '#dc3545']
-    elif state == "Syād_Asti_Avaktavyam":
+    elif state == "Syad_Asti_Avaktavyam":
         labels = ['Core Ground Affirmation', 'Unverified Cloud Wrapper']
         sizes = [65, 35]
         colors = ['#28a745', '#dc3545']
-    elif state == "Syād_Nasti_Avaktavyam":
+    elif state == "Syad_Nasti_Avaktavyam":
         labels = ['Core Ground Negation', 'Unverified Cloud Wrapper']
         sizes = [60, 40]
         colors = ['#dc3545', '#ced4da']
-    elif state == "Syād_Asti_Nasti":
+    elif state == "Syad_Asti_Nasti":
         labels = ['Affirmation (Asti)', 'Negation (Nasti)', 'Residual Noise']
         sizes = [45, 45, 10]
         colors = ['#28a745', '#dc3545', '#ffc107']
-    elif state == "Syād_Asti":
+    elif state == "Syad_Asti":
         labels = ['Grounded Affirmation Base', 'System Noise Floor']
         sizes = [90, 10]
         colors = ['#28a745', '#ced4da']
@@ -196,3 +196,4 @@ st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
 if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
     st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
     
+    # Calculate simulated Astrological modifier based on birth hour/minute parity
