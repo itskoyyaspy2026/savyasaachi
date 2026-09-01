@@ -8,7 +8,7 @@ import uuid
 st.set_page_config(page_title="SAVYASAACHI PaaS", page_icon="🎯", layout="wide")
 
 st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
-st.markdown("### *Multi-Vertical Epistemic Risk & Predictive Isolation Platform*")
+st.markdown("### *Multi-Vertical Epistemic Risk & Quantitative Projections Platform*")
 st.write("---")
 
 # --- SIDEBAR CONTROLS ---
@@ -18,43 +18,50 @@ industry = st.sidebar.selectbox(
     ["ELECTIONS", "MEDIA_MOVIES", "SPORTS_AUCTIONS", "GOVERNMENT_POLICY", "DISASTER_MANAGEMENT", "STARTUP_FINANCIERS"]
 )
 
-# --- DYNAMIC CONTEXT FIELDS ---
+# --- DYNAMIC MATRIX INPUT FIELDS ---
 st.sidebar.write("---")
-st.sidebar.header("📝 Target Metadata")
+st.sidebar.header("📝 Target Metadata Inputs")
 
 if industry == "ELECTIONS":
-    target_name = st.sidebar.text_input("Enter Political Party Name", value="INC")
-    party_status = st.sidebar.selectbox("Party Status in Region", ["INCUMBENT (Ruling)", "OPPOSITION / CHALLENGER"])
-    demographic_mix = st.sidebar.selectbox("Constituency/State Primary Terrain", ["RURAL-DOMINANT (Agrarian/Tribal)", "URBAN-DOMINANT (Multiplex/Tech-Hubs)"])
-    context_focus = st.sidebar.text_input("Enter Election Cycle / Region", value="2028 Karnataka Assembly")
+    target_name = st.sidebar.text_input("Enter Party Name (e.g., BRS, TVK, BJP)", value="BRS")
+    country = st.sidebar.text_input("Country", value="India")
+    state_selected = st.sidebar.selectbox("State", ["Telangana", "Tamil Nadu", "West Bengal", "Karnataka", "Andhra Pradesh", "Maharashtra", "Other"])
+    election_year = st.sidebar.text_input("Election Year", value="2028")
+    region_type = st.sidebar.selectbox("Primary Region Profile", ["RURAL-DOMINANT (Agrarian)", "URBAN-DOMINANT (Multiplex/IT)"])
+    party_status = st.sidebar.selectbox("Status", ["INCUMBENT (Ruling)", "OPPOSITION / CHALLENGER"])
+    context_focus = f"{election_year} Assembly | {region_type} | {state_selected}, {country}"
     
 elif industry == "MEDIA_MOVIES":
-    target_name = st.sidebar.text_input("Enter Movie Title", value="Toxic")
-    movie_lang = st.sidebar.text_input("Enter Primary Language(s)", value="Kannada / Multi-Lingual")
-    movie_scale = st.sidebar.selectbox("Theatrical Release Scale", ["PAN-WORLD / PAN-INDIA MEGA EPIC", "METRO MULTIPLEX / URBAN TARGETED", "SINGLE-SCREEN MASS / LOCALIZED VENTURE"])
-    movie_censor = st.sidebar.selectbox("Thematic / Censor Certification", ["STRICT 'A' CERTIFICATE (Hyper-Violence/Dark Themes)", "U/A or U CERTIFICATE (Family/Clean Entertainment)"])
-    context_focus = f"Language: {movie_lang} | Scale: {movie_scale} | Rating: {movie_censor}"
+    target_name = st.sidebar.text_input("Enter Movie Title", value="Varanasi")
+    movie_lang = st.sidebar.text_input("Primary Language", value="Telugu / Multi-Lingual")
+    movie_distribution = st.sidebar.selectbox("Release Scale Strategy", ["GLOBAL EPIC", "PAN-INDIA COMMERCIAL", "REGIONAL SPECIFIC"])
+    movie_censor = st.sidebar.selectbox("Censor Certificate", ["STRICT 'A' CERTIFICATE (Adult Noir)", "U/A or U CERTIFICATE (Clean Family)"])
+    context_focus = f"Language: {movie_lang} | Scale: {movie_distribution} | Censor: {movie_censor}"
 
 elif industry == "SPORTS_AUCTIONS":
-    target_name = st.sidebar.text_input("Enter Athlete / Asset Name", value="Volatile Overseas Star X")
-    sport_type = st.sidebar.text_input("Enter Sport & Country Location", value="Cricket / India")
-    league_scale = st.sidebar.selectbox("League / Tournament Environment Scale", ["GLOBAL PREMIUM FRANCHISE (High-Purse / Extreme Pressure)", "LOCAL DOMESTIC CIRCUIT (Developmental / Base Valuation)"])
-    pitch_profile = st.sidebar.selectbox("Tactical Pitch / Ground Friction Profile", ["SLOW DUSTY TRAPS / HEAVY TURNING SURFACES", "HUMID HIGHWAY PITCHES / FLAT HIGH-SCORE RUNWAYS", "HIGH-ALTITUDE BOUNCE / FAST ACCELERATION GRIDS"])
-    context_focus = f"Sport: {sport_type} | League: {league_scale} | Ground: {pitch_profile}"
+    target_name = st.sidebar.text_input("Enter Athlete / Team Name", value="Indian Cricket Team")
+    sport_type = st.sidebar.text_input("Sport Type", value="Cricket")
+    country = st.sidebar.text_input("Country Hub", value="India")
+    pitch_profile = st.sidebar.selectbox("Ground / Pitch Friction Profile", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
+    context_focus = f"Sport: {sport_type} | Country: {country} | Environment: {pitch_profile}"
+
+elif industry == "GOVERNMENT_POLICY":
+    target_name = st.sidebar.text_input("Enter Competitive Exam Name (e.g., NEET, UPSC)", value="NEET-UG")
+    exam_year = st.sidebar.text_input("Exam Year", value="2026")
+    context_focus = f"Exam Matrix: {target_name} | Target Cycle Year: {exam_year}"
+
+elif industry == "DISASTER_MANAGEMENT":
+    target_name = st.sidebar.text_input("Enter Disaster Type (e.g., Flash Floods, Cyclone)", value="Flash Floods")
+    country = st.sidebar.text_input("Country", value="Nepal")
+    state_selected = st.sidebar.text_input("State / Zone", value="Bagmati Province")
+    region_type = st.sidebar.text_input("Specific Region Coordinates", value="Kavre Mountainside Grid-14")
+    context_focus = f"Disaster: {target_name} | Location: {region_type}, {state_selected}, {country}"
 
 elif industry == "STARTUP_FINANCIERS":
-    target_name = st.sidebar.text_input("Enter Startup Company Name", value="Blinkit")
-    startup_market = st.sidebar.text_input("Enter Market Sector & Country", value="Quick-Commerce / India")
-    venture_scale = st.sidebar.selectbox("Target Market Scaling Dynamics", ["HYPER-SCALING CONSUMER NETWORK (B2C / High Volatility)", "ENTERPRISE B2B SAAS NICHE (High Contract Value / Low Churn)"])
-    burn_trap = st.sidebar.selectbox("Primary Structural Capital Burn Trap", ["HIGH CUSTOMER ACQUISITION COST (CAC Inflation Trap)", "MASSIVE WAREHOUSING / DARK STORE REAL-ESTATE OPERATIONAL LEAKS", "HIGH USER DROP-OFF MATRIX (Weak Retention / Organic Churn)"])
-    context_focus = f"Market: {startup_market} | Dynamics: {venture_scale} | Risk: {burn_trap}"
-    
-elif industry == "GOVERNMENT_POLICY":
-    target_name = st.sidebar.text_input("Enter Proposed Policy Scheme", value="No Exam Fee Waiver")
-    context_focus = st.sidebar.text_input("Enter Target Demographic Group", value="Rural / Under-30 Youth")
-elif industry == "DISASTER_MANAGEMENT":
-    target_name = st.sidebar.text_input("Enter Active Disaster Event", value="Nepal Flash Floods")
-    context_focus = st.sidebar.text_input("Enter Isolated Topography Node", value="Mountain Ridge Grid-14")
+    target_name = st.sidebar.text_input("Enter Startup Name", value="Blinkit")
+    startup_market = st.sidebar.text_input("Market Sector & Country", value="Quick-Commerce / India")
+    burn_trap = st.sidebar.selectbox("Primary Capital Burn Trap", ["CAC Inflation Trap", "Dark Store Real-Estate Overhead", "Organic User Churn"])
+    context_focus = f"Market: {startup_market} | Primary Core Risk: {burn_trap}"
 
 # --- SLIDER TUNING ---
 st.sidebar.write("---")
@@ -64,7 +71,7 @@ env_volatility = st.sidebar.slider("Environmental Volatility Index", 0.0, 1.0, 0
 st.sidebar.write("---")
 st.sidebar.header("🚨 Adversarial Attack Simulator")
 noise_score = st.sidebar.slider("Bot / Social Media Manipulation Score", 0.0, 1.0, 0.85, step=0.05)
-affirmation_score = st.sidebar.slider("Online Affirmation (Hype / SOS Alerts)", 0.0, 1.0, 0.90, step=0.05)
+affirmation_score = st.sidebar.slider("Online Affirmation (Hype / SOS)", 0.0, 1.0, 0.90, step=0.05)
 negation_score = st.sidebar.slider("Online Negation (Review-Bomb / Panic)", 0.0, 1.0, 0.80, step=0.05)
 
 # --- ENGINE PROCESSING CORE ---
@@ -72,7 +79,7 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# 7-Fold Saptabhaṅgī Decision Routing Logic
+# Saptabhaṅgī Decision Routing Logic
 if is_manipulated and structural_contradiction > 0.5:
     state = "Syād_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
@@ -105,19 +112,8 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("🔮 Epistemological Status Monitor")
-    if industry == "STARTUP_FINANCIERS":
-        st.write(f"**Target Company Asset:** `{target_name.upper()}` | *Market Base:* `{startup_market}`")
-        st.write(f"💼 *Context Profile:* `{venture_scale}` | `[{burn_trap}]`")
-    elif industry == "SPORTS_AUCTIONS":
-        st.write(f"**Target Asset Instance:** `{target_name.upper()}` | *Sport Metric:* `{sport_type}`")
-        st.write(f"🏃 *Context Profile:* `{league_scale}` | `[{pitch_profile}]`")
-    elif industry == "MEDIA_MOVIES":
-        st.write(f"**Target System Instance:** `{target_name.upper()}` | *Language Core:* `{movie_lang}`")
-        st.write(f"📊 *Scale Profile:* `{movie_scale}` | `[{movie_censor}]`")
-    elif industry == "ELECTIONS":
-        st.write(f"**Target System Instance:** `{target_name}` | *Profile:* `{party_status}` | `{demographic_mix}`")
-    else:
-        st.write(f"**Target System Instance:** `{target_name}` | *Context Profile:* `{context_focus}`")
+    st.write(f"**Target System Instance:** `{target_name.upper()}`")
+    st.write(f"📊 *Matrix Track:* `{context_focus}`")
     
     if state == "Syād_Avaktavyam" or state == "Syād_Nasti":
         st.error(f"Current Standpoint: {state}")
@@ -136,15 +132,15 @@ with col2:
     fig, ax = plt.subplots(figsize=(5, 3))
     if state == "Syād_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
-        sizes = [5, 95]
+        sizes = [15, 85]
         colors = ['#ced4da', '#dc3545']
     elif state == "Syād_Asti_Avaktavyam":
         labels = ['Core Ground Affirmation', 'Unverified Cloud Wrapper']
-        sizes = [30, 70]
+        sizes = [65, 35]
         colors = ['#28a745', '#dc3545']
     elif state == "Syād_Nasti_Avaktavyam":
         labels = ['Core Ground Negation', 'Unverified Cloud Wrapper']
-        sizes = [25, 75]
+        sizes = [60, 40]
         colors = ['#dc3545', '#ced4da']
     elif state == "Syād_Asti_Nasti":
         labels = ['Affirmation (Asti)', 'Negation (Nasti)', 'Residual Noise']
@@ -163,16 +159,26 @@ with col2:
     ax.axis('equal')
     st.pyplot(fig)
 
-# --- THE STRONGEST AGENDA MODULE ---
+# --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
 st.write("---")
-st.subheader("👑 Make the Strongest Agenda with SAVYA SAACHI")
-st.markdown("*Let the engine run a multi-dimensional predictive simulation to generate your absolute, un-falsifiable strategy playbook.*")
+st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
 
-if st.button("⚡ Generate Strategic Agenda Playbook"):
-    st.markdown(f"### 📝 AUTHORITATIVE OPERATIONAL AGENDA FOR: {target_name.upper()}")
+if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
+    st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
     
     if industry == "ELECTIONS":
-        st.write(f"*Contextual Focus Area: {context_focus}*")
-        if "INCUMBENT" in party_status and "RURAL" in demographic_mix:
-            st.success(f"🗳️ **[{target_name.upper()}] Playbook: Rural Incumbency Saturation Blueprint**")
-            st.write("1. **Audit the Welfare Inflow Density:** Use the Ground Verification API to cross-reference direct benefit transfers. Your core female cushion must be intensely tracked to block localized male anti-incumbency loops.")
+        # Dynamic calculation of margins based on simulator variables
+        base_margin = 12.5 if state == "Syād_Asti" else (5.2 if state == "Syād_Asti_Nasti" else 2.1)
+        calculated_margin = max(0.8, base_margin - (noise_score * 4.0) + (affirmation_score * 3.0))
+        
+        st.info(f"🧭 **Electoral Matrix Mapping:** Country: `{country}` | State: `{state_selected}` | Party: `{target_name}` | Year: `{election_year}` | Region: `{region_type}`")
+        
+        st.markdown("### 📊 QUANTITATIVE ENGINE PROJECTIONS:")
+        st.metric(label="🎯 Predicted Winning Margin Percentage", value=f"{round(calculated_margin, 2)}% Vote Share Gap")
+        
+        st.markdown("### 📌 AUTHORITATIVE CAMPAIGN AGENDA:")
+        if "TELANGANA" in state_selected.upper() or "BRS" in target_name.upper():
+            st.write("• **Map the Regional Welfare vs. Fiscal Deficit Continuum:** Deploy the Ground Verification API to monitor local Rythu Bharosa or water delivery metrics directly at booth levels, bypassing online noise leaks.")
+            st.write("• **Isolate the Urban Hyderabad Tech Matrix:** Separate municipal development arguments from rural anti-incumbency layers to lock down middle-class segments.")
+        elif "TAMIL" in state_selected.upper() or "TVK" in target_name.upper() or "DMK" in target_name.upper() or "AIADMK" in target_name.upper():
+            st.write("• **Isolate the Youth-Aspirational Trend Arc:** Frame core strategic messaging around transparent employment infrastructure and economic mobility to override legacy Dravidian binary constraints.")
