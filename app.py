@@ -160,7 +160,6 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
-    # FIXED: All empty arrays fully populated to fix the crash
     if engine_state == "Syad_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
         sizes = [15, 85]
@@ -192,4 +191,6 @@ with col2:
 
 # --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
 st.write("---")
-st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
+st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
+
+# RESTORED: This is your explicit generation button layer right here!
