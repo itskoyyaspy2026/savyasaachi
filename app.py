@@ -99,7 +99,7 @@ volume = st.sidebar.slider("Incoming Data Volume (Signals)", 1000, 500000, 15000
 env_volatility = st.sidebar.slider("Environmental Volatility Index", 0.0, 1.0, 0.75, step=0.05)
 
 st.sidebar.write("---")
-st.sidebar.header("Adversarial Attack Simulator")
+st.sidebar.header("🚨 Adversarial Attack Simulator")
 noise_score = st.sidebar.slider("Bot / Social Media Manipulation Score", 0.0, 1.0, 0.85, step=0.05)
 affirmation_score = st.sidebar.slider("Online Affirmation (Hype / SOS)", 0.0, 1.0, 0.90, step=0.05)
 negation_score = st.sidebar.slider("Online Negation (Review-Bomb / Panic)", 0.0, 1.0, 0.80, step=0.05)
@@ -124,15 +124,15 @@ elif negation_score >= 0.5 and is_manipulated:
     weight_modifier = 0.15
 elif affirmation_score >= 0.5 and negation_score >= 0.5:
     state = "Syad_Asti_Nasti"
-    action = f"BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
+    action = f"🌗 SPLIT CURRENT SPECTRUM: BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
     weight_modifier = 0.50
 elif negation_score >= 0.5:
     state = "Syad_Nasti"
-    action = f"EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
+    action = f"📉 DOWNWARD WAVE: EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 else:
     state = "Syad_Asti"
-    action = f"CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
+    action = f"📈 UPWARD WAVE: CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 
 computed_mass = volume * weight_modifier
@@ -189,11 +189,9 @@ with col2:
     ax.axis('equal')
     st.pyplot(fig)
 
-# --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
+# --- THE UNIVERSAL STRATEGIC MATRIX COMPILER (Bypassed the Button constraint for instant permanent visibility) ---
 st.write("---")
-st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
+st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
 
-if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
-    st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
-    
-    # Calculate simulated Astrological modifier based on birth hour/minute parity
+st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
+
