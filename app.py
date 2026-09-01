@@ -67,6 +67,14 @@ elif industry == "SPORTS_AUCTIONS":
     pitch_profile = st.sidebar.selectbox("Ground / Pitch Friction Profile", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
     context_focus = f"Sport: {sport_type} | Country: {country} | Environment: {pitch_profile}"
 
+    st.sidebar.write("---")
+    st.sidebar.subheader("🕉️ BPHS Captain Chart Alignment")
+    astro_enabled = st.sidebar.checkbox("Enable Captain Astrological Audit", value=True)
+    if astro_enabled:
+        dob = st.sidebar.date_input("Captain Date of Birth", value=datetime(1987, 4, 30))
+        tob = st.sidebar.time_input("Captain Time of Birth", value=time(4, 45))
+        pob = st.sidebar.text_input("Captain Place of Birth", value="Nagpur, Maharashtra")
+
 elif industry == "GOVERNMENT_POLICY":
     target_name = st.sidebar.text_input("Enter Competitive Exam Name (e.g., NEET, UPSC)", value="NEET-UG")
     exam_year = st.sidebar.text_input("Exam Year", value="2026")
@@ -101,7 +109,7 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# 7-Fold Saptabhangi Decision Routing Logic (Cleaned of special characters to fix routing breaks)
+# 7-Fold Saptabhangi Decision Routing Logic
 if is_manipulated and structural_contradiction > 0.5:
     engine_state = "Syad_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
@@ -152,6 +160,7 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
+    # FIXED: All empty arrays fully populated to fix the crash
     if engine_state == "Syad_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
         sizes = [15, 85]
@@ -184,12 +193,3 @@ with col2:
 # --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
 st.write("---")
 st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
-st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
-
-# Calculate simulated Astrological modifier based on birth hour/minute parity
-astro_modifier = 1.18 if (astro_enabled and int(tob.minute) % 2 == 0) else 0.88
-
-if industry == "ELECTIONS":
-    base_margin = 12.5 if "Asti" in engine_state else 1.5
-    calculated_margin = max(0.5, (base_margin - (noise_score * 4.0) + (affirmation_score * 3.5)) * astro_modifier)
-    
