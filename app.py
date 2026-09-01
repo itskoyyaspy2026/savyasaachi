@@ -109,7 +109,6 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# 7-Fold Saptabhangi Decision Routing Logic (Cleaned of special characters to prevent calculation cuts)
 if is_manipulated and structural_contradiction > 0.5:
     engine_state = "Syad_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
@@ -160,6 +159,7 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
+    # CRITICAL FIX: All empty size fields are now populated with hard numbers to prevent cloud layout freezing
     if engine_state == "Syad_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
         sizes = [15, 85]
@@ -192,3 +192,4 @@ with col2:
 # --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
 st.write("---")
 st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
+
