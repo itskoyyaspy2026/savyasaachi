@@ -9,7 +9,7 @@ from datetime import datetime, time
 st.set_page_config(page_title="SAVYASAACHI PaaS", page_icon="🎯", layout="wide")
 
 st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
-st.markdown("### *Multi-Vertical Epistemic Risk & BPHS Astrological Alignment Platform*")
+st.markdown("### *Multi-Vertical Epistemic Risk & Quantitative Projections Platform*")
 st.write("---")
 
 # --- SIDEBAR CONTROLS ---
@@ -21,9 +21,8 @@ industry = st.sidebar.selectbox(
 
 # --- DYNAMIC MATRIX INPUT FIELDS ---
 st.sidebar.write("---")
-st.sidebar.header("¼️ Target Metadata Inputs")
+st.sidebar.header("📝 Target Metadata Inputs")
 
-# Astrological Flag Initializer
 astro_enabled = False
 
 if industry == "ELECTIONS":
@@ -110,29 +109,29 @@ dynamic_noise_limit = 0.60 - (env_volatility * 0.15)
 is_manipulated = noise_score > dynamic_noise_limit
 structural_contradiction = min(affirmation_score, negation_score) * 2.0
 
-# Saptabhaṅgī Decision Routing Logic
+# 7-Fold Saptabhangi Decision Routing Logic (Cleaned of special characters to prevent calculation cuts)
 if is_manipulated and structural_contradiction > 0.5:
-    state = "Syād_Avaktavyam"
+    engine_state = "Syad_Avaktavyam"
     action = f"🚨 QUARANTINE ACTIVE: LOCK PREDICTION FOR [{target_name.upper()}] & DEPLOY GROUND API"
     weight_modifier = 0.02
 elif affirmation_score >= 0.5 and is_manipulated:
-    state = "Syād_Asti_Avaktavyam"
+    engine_state = "Syad_Asti_Avaktavyam"
     action = f"⚠️ ISOLATE CORE TRUTH FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.20
 elif negation_score >= 0.5 and is_manipulated:
-    state = "Syād_Nasti_Avaktavyam"
+    engine_state = "Syad_Nasti_Avaktavyam"
     action = f"⚠️ ISOLATE REVERSAL CORE FOR [{target_name.upper()}]: EMBED HIGH UNCERTAINTY ENVELOPE"
     weight_modifier = 0.15
 elif affirmation_score >= 0.5 and negation_score >= 0.5:
-    state = "Syād_Asti_Nasti"
+    engine_state = "Syad_Asti_Nasti"
     action = f"🌗 SPLIT CURRENT SPECTRUM: BIFURCATE TACTICAL STRATEGY CHANNELS FOR [{target_name.upper()}]"
     weight_modifier = 0.50
 elif negation_score >= 0.5:
-    state = "Syād_Nasti"
+    engine_state = "Syad_Nasti"
     action = f"📉 DOWNWARD WAVE: EXECUTE STRATEGIC DEFENSIVE RESPONSE PROFILE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 else:
-    state = "Syād_Asti"
+    engine_state = "Syad_Asti"
     action = f"📈 UPWARD WAVE: CONSOLIDATE PRIMARY BULLISH VECTOR / STABLE BASE FOR [{target_name.upper()}]"
     weight_modifier = 1.00
 
@@ -146,12 +145,12 @@ with col1:
     st.write(f"**Target System Instance:** `{target_name.upper()}`")
     st.write(f"📊 *Matrix Track:* `{context_focus}`")
     
-    if state == "Syād_Avaktavyam" or state == "Syād_Nasti":
-        st.error(f"Current Standpoint: {state}")
-    elif "Avaktavyam" in state:
-        st.warning(f"Current Standpoint: {state}")
+    if engine_state == "Syad_Avaktavyam" or engine_state == "Syad_Nasti":
+        st.error(f"Current Standpoint: {engine_state}")
+    elif "Avaktavyam" in engine_state:
+        st.warning(f"Current Standpoint: {engine_state}")
     else:
-        st.success(f"Current Standpoint: {state}")
+        st.success(f"Current Standpoint: {engine_state}")
         
     st.info(f"**Engine Protocol Directives:**\n{action}")
     st.metric(label="Computed Epistemic Data Weight (Clean Mass)", value=f"{int(computed_mass)} units")
@@ -161,23 +160,23 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
-    if state == "Syād_Avaktavyam":
+    if engine_state == "Syad_Avaktavyam":
         labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
-        sizes = [5, 95]
+        sizes = [15, 85]
         colors = ['#ced4da', '#dc3545']
-    elif state == "Syād_Asti_Avaktavyam":
+    elif engine_state == "Syad_Asti_Avaktavyam":
         labels = ['Core Ground Affirmation', 'Unverified Cloud Wrapper']
-        sizes = [30, 70]
+        sizes = [65, 35]
         colors = ['#28a745', '#dc3545']
-    elif state == "Syād_Nasti_Avaktavyam":
+    elif engine_state == "Syad_Nasti_Avaktavyam":
         labels = ['Core Ground Negation', 'Unverified Cloud Wrapper']
-        sizes = [25, 75]
+        sizes = [60, 40]
         colors = ['#dc3545', '#ced4da']
-    elif state == "Syād_Asti_Nasti":
+    elif engine_state == "Syad_Asti_Nasti":
         labels = ['Affirmation (Asti)', 'Negation (Nasti)', 'Residual Noise']
         sizes = [45, 45, 10]
         colors = ['#28a745', '#dc3545', '#ffc107']
-    elif state == "Syād_Asti":
+    elif engine_state == "Syad_Asti":
         labels = ['Grounded Affirmation Base', 'System Noise Floor']
         sizes = [90, 10]
         colors = ['#28a745', '#ced4da']
@@ -192,8 +191,4 @@ with col2:
 
 # --- THE UNIVERSAL STRATEGIC MATRIX COMPILER ---
 st.write("---")
-st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
-
-if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
-    st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
-    
+st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
