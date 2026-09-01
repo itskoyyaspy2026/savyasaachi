@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math
 import uuid
+from datetime import datetime, time
 
 # --- PAGE SETUP ---
 st.set_page_config(page_title="SAVYASAACHI PaaS", page_icon="🎯", layout="wide")
@@ -22,8 +23,11 @@ industry = st.sidebar.selectbox(
 st.sidebar.write("---")
 st.sidebar.header("📝 Target Metadata Inputs")
 
+astro_enabled = False
+
 if industry == "ELECTIONS":
     target_name = st.sidebar.text_input("Enter Party Name (e.g., BRS, TVK, BJP)", value="BRS")
+    leader_name = st.sidebar.text_input("Enter Leader Name", value="KCR")
     country = st.sidebar.text_input("Country", value="India")
     state_selected = st.sidebar.selectbox("State", ["Telangana", "Tamil Nadu", "West Bengal", "Karnataka", "Andhra Pradesh", "Maharashtra", "Other"])
     election_year = st.sidebar.text_input("Election Year", value="2028")
@@ -31,19 +35,45 @@ if industry == "ELECTIONS":
     party_status = st.sidebar.selectbox("Status", ["INCUMBENT (Ruling)", "OPPOSITION / CHALLENGER"])
     context_focus = f"{election_year} Assembly | {region_type} | {state_selected}, {country}"
     
+    st.sidebar.write("---")
+    st.sidebar.subheader("🕉️ BPHS Leader Chart Alignment")
+    astro_enabled = st.sidebar.checkbox("Enable Leader Astrological Audit", value=True)
+    if astro_enabled:
+        dob = st.sidebar.date_input("Leader Date of Birth", value=datetime(1954, 2, 17))
+        tob = st.sidebar.time_input("Leader Time of Birth", value=time(10, 30))
+        pob = st.sidebar.text_input("Leader Place of Birth", value="Chintamadaka, Telangana")
+    
 elif industry == "MEDIA_MOVIES":
     target_name = st.sidebar.text_input("Enter Movie Title", value="Varanasi")
+    hero_name = st.sidebar.text_input("Enter Lead Hero Name", value="Mahesh Babu")
     movie_lang = st.sidebar.text_input("Primary Language", value="Telugu / Multi-Lingual")
     movie_distribution = st.sidebar.selectbox("Release Scale Strategy", ["GLOBAL EPIC", "PAN-INDIA COMMERCIAL", "REGIONAL SPECIFIC"])
     movie_censor = st.sidebar.selectbox("Censor Certificate", ["STRICT 'A' CERTIFICATE (Adult Noir)", "U/A or U CERTIFICATE (Clean Family)"])
     context_focus = f"Language: {movie_lang} | Scale: {movie_distribution} | Censor: {movie_censor}"
 
+    st.sidebar.write("---")
+    st.sidebar.subheader("🕉️ BPHS Hero Chart Alignment")
+    astro_enabled = st.sidebar.checkbox("Enable Hero Astrological Audit", value=True)
+    if astro_enabled:
+        dob = st.sidebar.date_input("Hero Date of Birth", value=datetime(1975, 8, 9))
+        tob = st.sidebar.time_input("Hero Time of Birth", value=time(18, 22))
+        pob = st.sidebar.text_input("Hero Place of Birth", value="Chennai, Tamil Nadu")
+
 elif industry == "SPORTS_AUCTIONS":
     target_name = st.sidebar.text_input("Enter Athlete / Team Name", value="Indian Cricket Team")
+    captain_name = st.sidebar.text_input("Enter Captain Name", value="Rohit Sharma")
     sport_type = st.sidebar.text_input("Sport Type", value="Cricket")
     country = st.sidebar.text_input("Country Hub", value="India")
     pitch_profile = st.sidebar.selectbox("Ground / Pitch Friction Profile", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
     context_focus = f"Sport: {sport_type} | Country: {country} | Environment: {pitch_profile}"
+
+    st.sidebar.write("---")
+    st.sidebar.subheader("🕉️ BPHS Captain Chart Alignment")
+    astro_enabled = st.sidebar.checkbox("Enable Captain Astrological Audit", value=True)
+    if astro_enabled:
+        dob = st.sidebar.date_input("Captain Date of Birth", value=datetime(1987, 4, 30))
+        tob = st.sidebar.time_input("Captain Time of Birth", value=time(4, 45))
+        pob = st.sidebar.text_input("Captain Place of Birth", value="Nagpur, Maharashtra")
 
 elif industry == "GOVERNMENT_POLICY":
     target_name = st.sidebar.text_input("Enter Competitive Exam Name (e.g., NEET, UPSC)", value="NEET-UG")
@@ -166,19 +196,3 @@ st.subheader("👑 Execute SAVYASAACHI Predictive Architecture")
 if st.button("⚡ Calculate Quantitative Outputs & Strategic Directives"):
     st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
     
-    if industry == "ELECTIONS":
-        # Dynamic calculation of margins based on simulator variables
-        base_margin = 12.5 if state == "Syād_Asti" else (5.2 if state == "Syād_Asti_Nasti" else 2.1)
-        calculated_margin = max(0.8, base_margin - (noise_score * 4.0) + (affirmation_score * 3.0))
-        
-        st.info(f"🧭 **Electoral Matrix Mapping:** Country: `{country}` | State: `{state_selected}` | Party: `{target_name}` | Year: `{election_year}` | Region: `{region_type}`")
-        
-        st.markdown("### 📊 QUANTITATIVE ENGINE PROJECTIONS:")
-        st.metric(label="🎯 Predicted Winning Margin Percentage", value=f"{round(calculated_margin, 2)}% Vote Share Gap")
-        
-        st.markdown("### 📌 AUTHORITATIVE CAMPAIGN AGENDA:")
-        if "TELANGANA" in state_selected.upper() or "BRS" in target_name.upper():
-            st.write("• **Map the Regional Welfare vs. Fiscal Deficit Continuum:** Deploy the Ground Verification API to monitor local Rythu Bharosa or water delivery metrics directly at booth levels, bypassing online noise leaks.")
-            st.write("• **Isolate the Urban Hyderabad Tech Matrix:** Separate municipal development arguments from rural anti-incumbency layers to lock down middle-class segments.")
-        elif "TAMIL" in state_selected.upper() or "TVK" in target_name.upper() or "DMK" in target_name.upper() or "AIADMK" in target_name.upper():
-            st.write("• **Isolate the Youth-Aspirational Trend Arc:** Frame core strategic messaging around transparent employment infrastructure and economic mobility to override legacy Dravidian binary constraints.")
