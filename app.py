@@ -1,3 +1,4 @@
+# Save this text block on your laptop as a file named "app.py"
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -159,29 +160,28 @@ with col2:
     st.subheader("📊 Live Bounded Risk Envelope")
     
     fig, ax = plt.subplots(figsize=(5, 3))
-    # CRITICAL FIX: All empty size fields are now populated with hard numbers to prevent cloud layout freezing
     if engine_state == "Syad_Avaktavyam":
-        labels = ['Trusted Ground Data', 'Unquantifiable Noise Chaos']
-        sizes = [15, 85]
+        labels = ['Trusted Data', 'Chaos']
+        sizes = [20, 80]
         colors = ['#ced4da', '#dc3545']
     elif engine_state == "Syad_Asti_Avaktavyam":
-        labels = ['Core Ground Affirmation', 'Unverified Cloud Wrapper']
-        sizes = [65, 35]
+        labels = ['Affirmation', 'Chaos']
+        sizes = [70, 30]
         colors = ['#28a745', '#dc3545']
     elif engine_state == "Syad_Nasti_Avaktavyam":
-        labels = ['Core Ground Negation', 'Unverified Cloud Wrapper']
-        sizes = [60, 40]
+        labels = ['Negation', 'Chaos']
+        sizes = [65, 35]
         colors = ['#dc3545', '#ced4da']
     elif engine_state == "Syad_Asti_Nasti":
-        labels = ['Affirmation (Asti)', 'Negation (Nasti)', 'Residual Noise']
+        labels = ['Asti', 'Nasti', 'Noise']
         sizes = [45, 45, 10]
         colors = ['#28a745', '#dc3545', '#ffc107']
     elif engine_state == "Syad_Asti":
-        labels = ['Grounded Affirmation Base', 'System Noise Floor']
+        labels = ['Affirmation Base', 'Noise']
         sizes = [90, 10]
         colors = ['#28a745', '#ced4da']
     else:
-        labels = ['Grounded Negation Base', 'System Noise Floor']
+        labels = ['Negation Base', 'Noise']
         sizes = [85, 15]
         colors = ['#dc3545', '#ced4da']
         
@@ -193,3 +193,8 @@ with col2:
 st.write("---")
 st.subheader("👑 Live SAVYASAACHI Predictive Execution Architecture")
 
+if st.button("⚡ GENERATE RESULT", key="universal_generate_button"):
+    st.markdown(f"## 📝 AUTHORITATIVE ARCHITECTURE REPORT FOR: {target_name.upper()}")
+    
+    astro_modifier = 1.18 if (astro_enabled and int(tob.minute) % 2 == 0) else 0.88
+    
