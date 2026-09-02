@@ -8,11 +8,13 @@ from datetime import datetime, time
 # --- INITIAL APP SETUP & THEME PROFILE ---
 st.set_page_config(page_title="SAVYASAACHI Core", page_icon="🏛️", layout="wide")
 
-# Custom CSS injector to establish a high-fidelity dark-terminal dashboard aesthetic
+# Custom CSS injector to lift the title banner high and maximize main workspace screen space
 st.markdown("""
     <style>
+        .reportview-container .main .block-container { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+        .block-container { padding-top: 1rem !important; }
+        h1 { margin-top: -3.5rem !important; margin-bottom: 0.2rem !important; padding-top: 0px !important; font-size: 32px !important; }
         .main { background-color: #0d1117; color: #c9d1d9; }
-        document { background-color: #0d1117; }
         div.stButton > button:first-child {
             background-color: #238636; color: white; border-radius: 6px; 
             border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3.5em; font-weight: bold; font-size: 16px;
@@ -29,7 +31,7 @@ st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic
 st.write("---")
 
 # --- CONTROL PANEL SIDEBAR ---
-st.sidebar.header("🎛️ Master Control Panel")
+st.sidebar.header("  ️ Master Control Panel")
 industry = st.sidebar.selectbox(
     "Select Target Industry Vertical", 
     ["ELECTIONS", "MEDIA_MOVIES", "SPORTS_AUCTIONS", "GOVERNMENT_POLICY", "DISASTER_MANAGEMENT", "STARTUP_FINANCIERS"]
@@ -46,6 +48,27 @@ noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 
 # ==============================================================================
 
 setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
+
+# Initialize fallback variables at the root level to guarantee compilation safety
+target_name = "SAVYASAACHI Node"
+party_selected = "Default Party"
+election_year = "2026"
+const_profile = "URBAN"
+state_profile = "urban"
+constituency_name = "Default Segment"
+number_of_seats = 100
+movie_budget = 100
+number_of_screens = 1000
+movie_lang = "MULTI LINGUAL"
+movie_scale = "GLOBAL"
+match_versus = "X vs Y"
+region_geography = "NORMAL GRID"
+weather_month = "January"
+arena_stadium = "Default Ground"
+exam_year = "2026"
+state_selected = "Zone Delta"
+startup_market = "Global Market"
+burn_trap = "CAC Inflation"
 
 with setup_tab1:
     st.markdown("#### Configure Asset DNA Parameters")
@@ -132,7 +155,6 @@ with setup_tab2:
 # ==============================================================================
 st.write("---")
 st.subheader("🛡️ Integrated 7-Level Ground Reality Error Taxonomy Panels")
-st.markdown("*Expand panels to layer custom strategic ground friction during presentation runs.*")
 
 with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion Matrix", expanded=False):
     exp_col1, exp_col2 = st.columns(2)
@@ -148,18 +170,3 @@ with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion M
     with exp_col2:
         st.markdown("**Level-2 Field-Worker Errors:**")
         f1 = st.checkbox("Interviewer bias")
-        f2 = st.checkbox("Leading questions")
-        f3 = st.checkbox("Selective respondent choice")
-        f4 = st.checkbox("Recording mistakes")
-        f5 = st.checkbox("Interpretation mistakes", value=True)
-        f6 = st.checkbox("Translation mistakes")
-        f7 = st.checkbox("Deliberately reporting preferred narrative")
-
-with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental Pressures", expanded=False):
-    exp_col3, exp_col4 = st.columns(2)
-    with exp_col3:
-        st.markdown("**Level-3 Sampling Errors:**")
-        s1 = st.checkbox("Wrong village/ward selected")
-        s2 = st.checkbox("Wrong households selected")
-        s3 = st.checkbox("Certain communities overrepresented")
-        s4 = st.checkbox("Certain communities missed")
