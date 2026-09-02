@@ -23,8 +23,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
-st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Matrix*")
+st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
+st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Engine*")
 st.write("---")
 
 # --- CONTROL SIDEBAR CONFIGURATIONS ---
@@ -35,7 +35,7 @@ industry = st.sidebar.selectbox(
 )
 
 st.sidebar.write("---")
-st.sidebar.subheader("📡 Real-Time Telemetry Signals")
+st.sidebar.header("📡 Real-Time Telemetry Signals")
 volume = st.sidebar.slider("Incoming Data Volume Ingest Registry", 1000, 500000, 150000, step=5000)
 noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 1.0, 0.35, step=0.05)
 
@@ -65,13 +65,13 @@ with setup_tab1:
         with inner_col1:
             const_profile = st.selectbox("Constituency Demographic Core Profile", ["URBAN", "RURAL", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
         with inner_col2:
-            state_profile = st.selectbox("Overall State Geographical Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
+            state_profile = st.selectbox("Overall State Geographic Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
         context_focus = f"State: {target_name} | Party: {party_selected} | Year: {election_year} | Const Profile: {const_profile}"
 
     elif industry == "MEDIA_MOVIES":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
         with meta_col1:
-            target_name = st.text_input("Movie Production Title String", value="Varanasi")
+            target_name = st.text_input("Movie Name String", value="Varanasi")
             production_house = st.text_input("Production Banner Identity", value="Vyjayanthi Movies")
         with meta_col2:
             director_name = st.text_input("Director Core String Name", value="Nag Ashwin")
@@ -90,7 +90,7 @@ with setup_tab1:
     elif industry == "SPORTS_AUCTIONS":
         meta_col1, meta_col2 = st.columns(2)
         with meta_col1:
-            target_name = st.text_input("Country Node Hub Geography", value="India")
+            target_name = st.text_input("Country Hub Node Geography", value="India")
             sport_type = st.text_input("Sport Classification Node", value="Cricket")
             match_versus = st.text_input("Match Billing Entry (X vs Y Matrix)", value="India vs Australia")
         with meta_col2:
@@ -134,7 +134,6 @@ st.write("---")
 st.subheader("🛡️ Integrated 7-Level Ground Reality Error Taxonomy Panels")
 st.markdown("*Expand specific layers to simulate tactical ground infrastructure disruptions during the demonstration.*")
 
-# Clear visual layout panels to avoid an overwhelming vertical scrolling experience
 with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion Matrix", expanded=False):
     exp_col1, exp_col2 = st.columns(2)
     with exp_col1:
@@ -161,3 +160,5 @@ with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental
     with exp_col3:
         st.markdown("**Level-3 Sampling Errors:**")
         s1 = st.checkbox("Wrong village/ward selected")
+        s2 = st.checkbox("Wrong households selected")
+        s3 = st.checkbox("Certain communities overrepresented")
