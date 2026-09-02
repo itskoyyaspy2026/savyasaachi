@@ -8,12 +8,14 @@ from datetime import datetime, time
 # --- INITIAL APP SETUP & THEME PROFILE ---
 st.set_page_config(page_title="SAVYASAACHI Core Engine", page_icon="🏛️", layout="wide")
 
+# Custom CSS injector to lift the title banner high and maximize main workspace screen space
 st.markdown("""
     <style>
         .reportview-container .main .block-container { padding-top: 0.2rem !important; padding-bottom: 0.2rem !important; }
         .block-container { padding-top: 0.5rem !important; }
         h1 { margin-top: -4.5rem !important; margin-bottom: 0.1rem !important; padding-top: 0px !important; font-size: 30px !important; }
         .main { background-color: #0d1117; color: #c9d1d9; }
+        document { background-color: #0d1117; }
         div.stButton > button:first-child {
             background-color: #238636; color: white; border-radius: 6px; 
             border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3.5em; font-weight: bold; font-size: 16px;
@@ -50,15 +52,15 @@ setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Grou
 
 # Initialize default fallbacks to ensure compilation layout safety across all verticals
 target_name = "Andhra Pradesh"
-party_selected = "TVK"
-election_year = "2026"
-const_profile = "URBAN"
-state_profile = "urban"
-constituency_name = "Visakhapatnam South"
+party_selected = "YSRCP"
+election_year = "2029"
+const_profile = "RURAL"
+state_profile = "rural"
+constituency_name = "Nuzvid"
 number_of_seats = 175
-charismatic_anchor = "New Mass Hero (Huge Fan Base)"
-ideology_shift = "Active Search for New Political Ideology / Party Birth"
-migrant_friction = 0.50
+charismatic_anchor = "Legacy of the Party Founder"
+ideology_shift = "Active Search for New Ideology & New Party Birth"
+migrant_friction = 0.65
 
 movie_budget = 250
 number_of_screens = 4500
@@ -78,32 +80,32 @@ with setup_tab1:
     if industry == "ELECTIONS":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
         with meta_col1:
-            target_name = st.text_input("State / Region Node Name", value="Tamil Nadu")
-            party_selected = st.text_input("Target Political Party String", value="TVK")
+            target_name = st.text_input("State / Region Node Name", value="Andhra Pradesh")
+            party_selected = st.text_input("Target Political Party String", value="YSRCP")
             charismatic_anchor = st.selectbox("Leadership Core Anchor Profile", [
-                "New Mass Hero (Huge Fan Base Surge)",
                 "Legacy of the Party Founder",
+                "New Mass Hero (Huge Fan Base Surge)",
                 "Legacy of the Present Active Leader",
                 "Standard Bureaucratic Alignment"
             ])
         with meta_col2:
             election_type = st.selectbox("Election Classification Type", ["Assembly Elections", "Lok Sabha Elections", "Bypoll Matrix"])
-            number_of_seats = st.slider("Total Number of Seats in State Landscape", 10, 545, 234, step=1)
+            number_of_seats = st.slider("Total Number of Seats in State Landscape", 10, 545, 175, step=1)
             ideology_shift = st.selectbox("Socio-Ideological Core Paradigm Shift", [
                 "Active Search for New Ideology & New Party Birth",
                 "Stable Retention of Legacy Status-Quo Ideology",
                 "Fragmented/Polarized Binary Chaos State"
             ])
         with meta_col3:
-            election_year = st.text_input("Election Cycle Target Year", value="2026")
-            constituency_name = st.text_input("Target Focus Constituency Name", value="Madurai Central")
+            election_year = st.text_input("Election Cycle Target Year", value="2029")
+            constituency_name = st.text_input("Target Focus Constituency Name", value="Nuzvid")
             migrant_friction = st.slider("Migrant Labour vs Local Friction Index (0=Low, 1=Severe Crisis)", 0.0, 1.0, 0.65, step=0.05)
             
         inner_col1, inner_col2 = st.columns(2)
         with inner_col1:
-            const_profile = st.selectbox("Constituency Demographic Core Profile", ["URBAN", "RURAL", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
+            const_profile = st.selectbox("Constituency Demographic Core Profile", ["RURAL", "URBAN", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
         with inner_col2:
-            state_profile = st.selectbox("Overall State Geographic Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
+            state_profile = st.selectbox("Overall State Geographic Dominance Profile", ["rural", "urban", "semi rural", "bc populated", "sc populated", "tribal"])
 
     elif industry == "MEDIA_MOVIES":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
@@ -172,6 +174,3 @@ with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion M
         r2 = st.checkbox("Hides actual preference", value=True)
         r3 = st.checkbox("Gives socially acceptable answer")
         r4 = st.checkbox("Fear of local political consequences")
-        r5 = st.checkbox("Doesn't want to reveal voting intention")
-        r6 = st.checkbox("Doesn't understand the question")
-s
