@@ -8,7 +8,6 @@ from datetime import datetime, time
 # --- INITIAL APP SETUP & THEME PROFILE ---
 st.set_page_config(page_title="SAVYASAACHI Core Engine", page_icon="🏛️", layout="wide")
 
-# Custom CSS injector to lift the title banner high and maximize main workspace screen space
 st.markdown("""
     <style>
         .reportview-container .main .block-container { padding-top: 0.2rem !important; padding-bottom: 0.2rem !important; }
@@ -49,18 +48,22 @@ noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 
 
 setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
 
-# Initialize default parameters to ensure compilation safety across all panels
-target_name = "SAVYASAACHI Node"
-party_selected = "Default Party"
+# Initialize default fallbacks to ensure compilation layout safety across all verticals
+target_name = "Andhra Pradesh"
+party_selected = "TVK"
 election_year = "2026"
 const_profile = "URBAN"
 state_profile = "urban"
-constituency_name = "Default Segment"
-number_of_seats = 100
-movie_budget = 100
-number_of_screens = 1000
-movie_lang = "MULTI LINGUAL"
-movie_scale = "GLOBAL"
+constituency_name = "Visakhapatnam South"
+number_of_seats = 175
+charismatic_anchor = "New Mass Hero (Huge Fan Base)"
+ideology_shift = "Active Search for New Political Ideology / Party Birth"
+migrant_friction = 0.50
+
+movie_budget = 250
+number_of_screens = 4500
+movie_lang = "TELUGU"
+movie_scale = "PAN INDIA"
 match_versus = "X vs Y"
 region_geography = "NORMAL GRID"
 weather_month = "January"
@@ -75,14 +78,26 @@ with setup_tab1:
     if industry == "ELECTIONS":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
         with meta_col1:
-            target_name = st.text_input("State / Region Node Name", value="Andhra Pradesh")
+            target_name = st.text_input("State / Region Node Name", value="Tamil Nadu")
             party_selected = st.text_input("Target Political Party String", value="TVK")
+            charismatic_anchor = st.selectbox("Leadership Core Anchor Profile", [
+                "New Mass Hero (Huge Fan Base Surge)",
+                "Legacy of the Party Founder",
+                "Legacy of the Present Active Leader",
+                "Standard Bureaucratic Alignment"
+            ])
         with meta_col2:
             election_type = st.selectbox("Election Classification Type", ["Assembly Elections", "Lok Sabha Elections", "Bypoll Matrix"])
-            number_of_seats = st.slider("Total Number of Seats in State Landscape", 10, 545, 175, step=1)
+            number_of_seats = st.slider("Total Number of Seats in State Landscape", 10, 545, 234, step=1)
+            ideology_shift = st.selectbox("Socio-Ideological Core Paradigm Shift", [
+                "Active Search for New Ideology & New Party Birth",
+                "Stable Retention of Legacy Status-Quo Ideology",
+                "Fragmented/Polarized Binary Chaos State"
+            ])
         with meta_col3:
             election_year = st.text_input("Election Cycle Target Year", value="2026")
-            constituency_name = st.text_input("Target Focus Constituency Name", value="Visakhapatnam South")
+            constituency_name = st.text_input("Target Focus Constituency Name", value="Madurai Central")
+            migrant_friction = st.slider("Migrant Labour vs Local Friction Index (0=Low, 1=Severe Crisis)", 0.0, 1.0, 0.65, step=0.05)
             
         inner_col1, inner_col2 = st.columns(2)
         with inner_col1:
@@ -101,7 +116,6 @@ with setup_tab1:
         with meta_col3:
             hero_name = st.text_input("Lead Hero Identity Name Asset", value="Mahesh Babu")
             number_of_screens = st.slider("Number of Screens Deployed Globally", 100, 15000, 4500, step=50)
-            
         inner_col1, inner_col2 = st.columns(2)
         with inner_col1:
             movie_lang = st.selectbox("Primary Audio Language Deployment", ["TELUGU", "TAMIL", "KANNADA", "MALAYALAM", "HINDI", "ENGLISH", "MULTI LINGUAL"])
@@ -160,17 +174,4 @@ with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion M
         r4 = st.checkbox("Fear of local political consequences")
         r5 = st.checkbox("Doesn't want to reveal voting intention")
         r6 = st.checkbox("Doesn't understand the question")
-        r7 = st.checkbox("Changes answer depending on who asks")
-    with exp_col2:
-        st.markdown("**Level-2 Field-Worker Errors:**")
-        f1 = st.checkbox("Interviewer bias")
-        f2 = st.checkbox("Leading questions")
-        f3 = st.checkbox("Selective respondent choice")
-        f4 = st.checkbox("Recording mistakes")
-        f5 = st.checkbox("Interpretation mistakes", value=True)
-        f6 = st.checkbox("Translation mistakes")
-        f7 = st.checkbox("Deliberately reporting preferred narrative")
-
-# RESTORED AND AUDITED: Forced a flat, sequential column layout grid to prevent levels 3 and 4 from clipping out
-with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental Pressures", expanded=False):
-    exp_col3, exp_col4 = st.columns(2)
+s
