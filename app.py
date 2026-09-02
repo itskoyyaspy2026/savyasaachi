@@ -6,23 +6,7 @@ import uuid
 from datetime import datetime, time
 
 # --- INITIAL APP SETUP & THEME PROFILE ---
-st.set_page_config(page_title="SAVYASAACHI Executive Engine", page_icon="🏛️", layout="wide")
-
-# Custom CSS injector to establish a high-fidelity dark-terminal dashboard aesthetic
-st.markdown("""
-    <style>
-        .main { background-color: #0d1117; color: #c9d1d9; }
-        document { background-color: #0d1117; }
-        div.stButton > button:first-child {
-            background-color: #238636; color: white; border-radius: 6px; 
-            border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3.5em; font-weight: bold; font-size: 16px;
-        }
-        .metric-card {
-            background-color: #161b22; border: 1px solid #30363d; 
-            padding: 15px; border-radius: 8px; margin-bottom: 10px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="SAVYASAACHI Core", page_icon="🏛️", layout="wide")
 
 st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
 st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Engine*")
@@ -132,7 +116,6 @@ with setup_tab2:
 # ==============================================================================
 st.write("---")
 st.subheader("🛡️ Integrated 7-Level Ground Reality Error Taxonomy Panels")
-st.markdown("*Expand panels to layer custom strategic ground friction during presentation runs.*")
 
 with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion Matrix", expanded=False):
     exp_col1, exp_col2 = st.columns(2)
@@ -163,3 +146,19 @@ with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental
         s2 = st.checkbox("Wrong households selected")
         s3 = st.checkbox("Certain communities overrepresented")
         s4 = st.checkbox("Certain communities missed")
+        s5 = st.checkbox("Insufficient sample size")
+        s6 = st.checkbox("Repeated respondents")
+        s7 = st.checkbox("Inaccessible populations excluded")
+    with exp_col4:
+        st.markdown("**Level-4 Political / Environmental Errors:**")
+        p1 = st.checkbox("Voter fear")
+        p2 = st.checkbox("Local pressure")
+        p3 = st.checkbox("Intimidation")
+        p4 = st.checkbox("Temporary political events")
+        p5 = st.checkbox("Crowd behaviour mistaken for preference")
+        p6 = st.checkbox("Party workers influencing interaction")
+        p7 = st.checkbox("Village leaders influencing respondents")
+
+with st.expander("📂 Levels 5 & 6: Temporal Decay Cycles & Geographic Scale Mismatches", expanded=False):
+    exp_col5, exp_col6 = st.columns(2)
+    with exp_col5:
