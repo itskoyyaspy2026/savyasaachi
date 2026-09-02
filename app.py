@@ -11,9 +11,9 @@ st.set_page_config(page_title="SAVYASAACHI Core Engine", page_icon="🏛️", la
 # Custom CSS injector to lift the title banner high and maximize main workspace screen space
 st.markdown("""
     <style>
-        .reportview-container .main .block-container { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
-        .block-container { padding-top: 1rem !important; }
-        h1 { margin-top: -3.5rem !important; margin-bottom: 0.2rem !important; padding-top: 0px !important; font-size: 32px !important; }
+        .reportview-container .main .block-container { padding-top: 0.2rem !important; padding-bottom: 0.2rem !important; }
+        .block-container { padding-top: 0.5rem !important; }
+        h1 { margin-top: -4.5rem !important; margin-bottom: 0.1rem !important; padding-top: 0px !important; font-size: 30px !important; }
         .main { background-color: #0d1117; color: #c9d1d9; }
         div.stButton > button:first-child {
             background-color: #238636; color: white; border-radius: 6px; 
@@ -27,7 +27,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
-st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Engine*")
+st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Engine*")
 st.write("---")
 
 # --- CONTROL PANEL SIDEBAR ---
@@ -49,7 +49,7 @@ noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 
 
 setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
 
-# Initialize default parameters to ensure compilation safety
+# Initialize default parameters to ensure compilation safety across all panels
 target_name = "SAVYASAACHI Node"
 party_selected = "Default Party"
 election_year = "2026"
@@ -89,7 +89,6 @@ with setup_tab1:
             const_profile = st.selectbox("Constituency Demographic Core Profile", ["URBAN", "RURAL", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
         with inner_col2:
             state_profile = st.selectbox("Overall State Geographic Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
-        context_focus = f"State: {target_name} | Party: {party_selected} | Year: {election_year} | Profile: {const_profile}"
 
     elif industry == "MEDIA_MOVIES":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
@@ -108,7 +107,6 @@ with setup_tab1:
             movie_lang = st.selectbox("Primary Audio Language Deployment", ["TELUGU", "TAMIL", "KANNADA", "MALAYALAM", "HINDI", "ENGLISH", "MULTI LINGUAL"])
         with inner_col2:
             movie_scale = st.selectbox("Release Scale Strategy Footprint", ["REGIONAL", "PAN INDIA", "GLOBAL"])
-        context_focus = f"Lang: {movie_lang} | Scale: {movie_scale} | Screens: {number_of_screens}"
 
     elif industry == "SPORTS_AUCTIONS":
         meta_col1, meta_col2 = st.columns(2)
@@ -120,21 +118,17 @@ with setup_tab1:
             arena_stadium = st.text_input("Stadium / Ground Arena Infrastructure Name", value="Narendra Modi Stadium, Ahmedabad")
             weather_month = st.selectbox("Target Month (Weather Calibration Loop)", ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
             region_geography = st.selectbox("Atmosphere Terrain Geography (Air/Humidity/Temp)", ["HIGH HUMIDITY COASTAL GRID", "DRY ARID DUST PLAINS", "HIGH-ALTITUDE THIN AIR SECTOR"])
-        context_focus = f"Match: {match_versus} | Month: {weather_month} | Geography: {region_geography}"
 
     elif industry == "GOVERNMENT_POLICY":
         target_name = st.text_input("Enter Competitive Exam Name", value="NEET-UG")
         exam_year = st.text_input("Exam Year", value="2026")
-        context_focus = f"Exam Matrix: {target_name} | Target Cycle Year: {exam_year}"
     elif industry == "DISASTER_MANAGEMENT":
         target_name = st.text_input("Enter Disaster Type Node", value="Flash Floods")
         state_selected = st.text_input("State Zone Registry Location", value="Bagmati Province")
-        context_focus = f"Disaster Variant: {target_name} | Base Zone: {state_selected}"
     elif industry == "STARTUP_FINANCIERS":
         target_name = st.text_input("Enter Startup Profile Name", value="Blinkit")
         startup_market = st.text_input("Market Sector Footprint", value="Quick-Commerce / India")
         burn_trap = st.selectbox("Capital Burn Instability Trap", ["CAC Inflation Trap", "Dark Store Overheads", "Organic User Churn"])
-        context_focus = f"Market Venture: {startup_market} | Risk Vector: {burn_trap}"
 
 with setup_tab2:
     st.markdown("#### Ingest Chain of Custody Provenance Data")
@@ -170,3 +164,13 @@ with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion M
     with exp_col2:
         st.markdown("**Level-2 Field-Worker Errors:**")
         f1 = st.checkbox("Interviewer bias")
+        f2 = st.checkbox("Leading questions")
+        f3 = st.checkbox("Selective respondent choice")
+        f4 = st.checkbox("Recording mistakes")
+        f5 = st.checkbox("Interpretation mistakes", value=True)
+        f6 = st.checkbox("Translation mistakes")
+        f7 = st.checkbox("Deliberately reporting preferred narrative")
+
+# RESTORED AND AUDITED: Forced a flat, sequential column layout grid to prevent levels 3 and 4 from clipping out
+with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental Pressures", expanded=False):
+    exp_col3, exp_col4 = st.columns(2)
