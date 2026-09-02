@@ -5,7 +5,7 @@ import math
 import uuid
 from datetime import datetime, time
 
-# --- STYLISH ENTERPRISE UI BRANDING ENHANCEMENTS ---
+# --- INITIAL APP SETUP & THEME PROFILE ---
 st.set_page_config(page_title="SAVYASAACHI Executive Engine", page_icon="🏛️", layout="wide")
 
 # Custom CSS injector to give it a polished, high-fidelity dark-terminal aesthetic
@@ -123,7 +123,7 @@ with setup_tab2:
     with prov_col2:
         where_coordinates = st.text_input("4. SPATIAL GEOGRAPHIC COORDINATES (WHERE)", value="Visakhapatnam, Andhra Pradesh")
         when_date = st.date_input("5. TEMPORAL TARGET DATE ANCHOR (WHEN)", value=datetime(1980, 7, 14))
-        tob_frame = st.time_input("6. TEMPORAL CLOCK ANCHOR FRAME (TOB)", value=time(0, 30, 45))
+        tob_frame = st.time_input("6. TEMPORAL CLOCK ANCHOR FRAME (TOB)", value=time(12, 30, 45))
         under_conditions = st.selectbox("7. ENVIRONMENTAL AMBIENT CONDITIONS SHIELD", ["High Environmental Volatility", "Normal Parameters", "Adversarial Infiltration Environment", "Sensor/Communication Friction Grid"])
 
 
