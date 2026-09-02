@@ -6,7 +6,7 @@ import uuid
 from datetime import datetime, time
 
 # --- INITIAL APP SETUP & THEME PROFILE ---
-st.set_page_config(page_title="SAVYASAACHI Core", page_icon="🏛️", layout="wide")
+st.set_page_config(page_title="SAVYASAACHI Core Engine", page_icon="🏛️", layout="wide")
 
 # Custom CSS injector to lift the title banner high and maximize main workspace screen space
 st.markdown("""
@@ -27,7 +27,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
-st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Engine*")
+st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Engine*")
 st.write("---")
 
 # --- CONTROL PANEL SIDEBAR ---
@@ -49,7 +49,7 @@ noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 
 
 setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
 
-# Initialize fallback variables at the root level to guarantee compilation safety
+# Initialize default parameters to ensure compilation safety
 target_name = "SAVYASAACHI Node"
 party_selected = "Default Party"
 election_year = "2026"
