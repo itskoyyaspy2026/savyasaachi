@@ -5,7 +5,7 @@ import math
 import uuid
 from datetime import datetime, time
 
-# --- STYLISH ENTERPRISE UI BRANDING ENHANCEMENTS ---
+# --- INITIAL APP SETUP & THEME PROFILE ---
 st.set_page_config(page_title="SAVYASAACHI Executive Engine", page_icon="🏛️", layout="wide")
 
 # Custom CSS injector to establish a high-fidelity dark-terminal dashboard aesthetic
@@ -15,7 +15,7 @@ st.markdown("""
         document { background-color: #0d1117; }
         div.stButton > button:first-child {
             background-color: #238636; color: white; border-radius: 6px; 
-            border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3em; font-weight: bold;
+            border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3.5em; font-weight: bold; font-size: 16px;
         }
         .metric-card {
             background-color: #161b22; border: 1px solid #30363d; 
