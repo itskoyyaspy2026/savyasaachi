@@ -5,163 +5,159 @@ import math
 import uuid
 from datetime import datetime, time
 
-# --- INITIAL APP SETUP & THEME PROFILE ---
-st.set_page_config(page_title="SAVYASAACHI Core", page_icon="🏛️", layout="wide")
+# --- STYLISH ENTERPRISE UI BRANDING ENHANCEMENTS ---
+st.set_page_config(page_title="SAVYASAACHI Executive Engine", page_icon="🏛️", layout="wide")
+
+# Custom CSS injector to give it a polished, high-fidelity dark-terminal aesthetic
+st.markdown("""
+    <style>
+        .main { background-color: #0d1117; color: #c9d1d9; }
+        div.stButton > button:first-child {
+            background-color: #238636; color: white; border-radius: 6px; 
+            border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3em; font-weight: bold;
+        }
+        .metric-card {
+            background-color: #161b22; border: 1px solid #30363d; 
+            padding: 15px; border-radius: 8px; margin-bottom: 10px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
-st.markdown("### *Production Platform: 7-Level Ground Reality Error Taxonomy & Saptabhaṅgī Matrix Engine*")
+st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Matrix*")
 st.write("---")
 
 # --- CONTROL SIDEBAR CONFIGURATIONS ---
-st.sidebar.header("🎛️ System Registry Core")
+st.sidebar.header("🎛️ Master Control Panel")
 industry = st.sidebar.selectbox(
-    "Active Processing Vertical", 
+    "Select Target Industry Vertical", 
     ["ELECTIONS", "MEDIA_MOVIES", "SPORTS_AUCTIONS", "GOVERNMENT_POLICY", "DISASTER_MANAGEMENT", "STARTUP_FINANCIERS"]
 )
 
-# --- THE 7-LEVEL GROUND REALITY ERROR TAXONOMY INPUTS ---
 st.sidebar.write("---")
-st.sidebar.header("🛡️ 1. Respondent Error Matrix")
-resp_false_info = st.sidebar.checkbox("Intentionally gives false information")
-resp_hides_pref = st.sidebar.checkbox("Hides actual preference", value=True)
-resp_social_ans = st.sidebar.checkbox("Gives socially acceptable answer")
-resp_fear_conseq = st.sidebar.checkbox("Fear of local political consequences")
-resp_no_reveal = st.sidebar.checkbox("Doesn't want to reveal voting intention")
-resp_no_understand = st.sidebar.checkbox("Doesn't understand the question")
-resp_fluid_ans = st.sidebar.checkbox("Changes answer depending on who asks")
-
-st.sidebar.write("---")
-st.sidebar.header("📋 2. Field-Worker Error Matrix")
-fw_bias = st.sidebar.checkbox("Interviewer bias")
-fw_leading_q = st.sidebar.checkbox("Leading questions")
-fw_selective_choice = st.sidebar.checkbox("Selective respondent choice")
-fw_recording_mistake = st.sidebar.checkbox("Recording mistakes")
-fw_interpretation_mistake = st.sidebar.checkbox("Interpretation mistakes", value=True)
-fw_translation_mistake = st.sidebar.checkbox("Translation mistakes")
-fw_deliberate_report = st.sidebar.checkbox("Deliberately reporting preferred narrative")
-
-st.sidebar.write("---")
-st.sidebar.header("🎯 3. Sampling Error Matrix")
-samp_wrong_unit = st.sidebar.checkbox("Wrong village/ward selected")
-samp_wrong_home = st.sidebar.checkbox("Wrong households selected")
-samp_overrep = st.sidebar.checkbox("Certain communities overrepresented")
-samp_underrep = st.sidebar.checkbox("Certain communities missed")
-samp_low_size = st.sidebar.checkbox("Insufficient sample size")
-samp_repeat = st.sidebar.checkbox("Repeated respondents")
-samp_excluded = st.sidebar.checkbox("Inaccessible populations excluded")
-
-st.sidebar.write("---")
-st.sidebar.header("🌋 4. Political / Environmental Error Matrix")
-env_voter_fear = st.sidebar.checkbox("Voter fear")
-env_local_pressure = st.sidebar.checkbox("Local pressure")
-env_intimidation = st.sidebar.checkbox("Intimidation")
-env_temp_events = st.sidebar.checkbox("Temporary political events")
-env_crowd_mirage = st.sidebar.checkbox("Crowd behaviour mistaken for preference")
-env_party_influence = st.sidebar.checkbox("Party workers influencing interaction")
-env_leader_influence = st.sidebar.checkbox("Village leaders influencing respondents")
-
-st.sidebar.write("---")
-st.sidebar.header("⏳ 5. Temporal Error Matrix")
-temp_too_early = st.sidebar.checkbox("Observation taken too early")
-temp_immediate = st.sidebar.checkbox("Observation taken immediately after an event")
-temp_volatile_drift = st.sidebar.checkbox("Sentiment changing rapidly", value=True)
-temp_stale_report = st.sidebar.checkbox("Old field report being treated as current")
-
-st.sidebar.write("---")
-st.sidebar.header("🗺️ 6. Geographic Error Matrix")
-geo_const_mismatch = st.sidebar.checkbox("Village is not equal to constituency")
-geo_urban_mismatch = st.sidebar.checkbox("Urban ward is not equal to entire urban population")
-geo_booth_mismatch = st.sidebar.checkbox("One booth treated as entire constituency")
-geo_border_drift = st.sidebar.checkbox("Border areas having different behaviour")
-
-# --- CHAIN OF CUSTODY PROVENANCE LEDGER ---
-st.sidebar.write("---")
-st.sidebar.header("📝 7. Ingest Provenance Metadata")
-target_name = st.sidebar.text_input("Target Instance Name String (e.g. TVK, Varanasi, BRS)", value="TVK")
-where_coordinates = st.sidebar.text_input("Where Node (POB / Location Spatial Coordinates)", value="Visakhapatnam, Andhra Pradesh")
-tob_frame = st.sidebar.time_input("When Node Temporal Frame (TOB Clock)", value=time(12, 30, 45))
-
-# --- VERTICAL METADATA EXTRA ATTRIBUTES PROFILE ---
-st.sidebar.write("---")
-st.sidebar.header("📝 Vertical Specific Metadata")
-if industry == "ELECTIONS":
-    state_selected = st.sidebar.selectbox("State Region", ["Telangana", "Tamil Nadu", "West Bengal", "Karnataka", "Andhra Pradesh", "Maharashtra", "Other"])
-    election_year = st.sidebar.text_input("Election Year", value="2026")
-    region_type = st.sidebar.selectbox("Constituency Terrain Profile", ["RURAL-DOMINANT (Agrarian)", "URBAN-DOMINANT (Multiplex/IT)"])
-elif industry == "MEDIA_MOVIES":
-    movie_lang = st.sidebar.text_input("Primary Audio Language", value="Telugu / Multi-Lingual")
-    movie_distribution = st.sidebar.selectbox("Release Footprint Scale", ["GLOBAL EPIC", "PAN-INDIA COMMERCIAL", "REGIONAL SPECIFIC"])
-    movie_censor = st.sidebar.selectbox("Censor Certification Profile", ["STRICT 'A' CERTIFICATE (Adult Noir)", "U/A or U FAMILY CERTIFICATE"])
-elif industry == "SPORTS_AUCTIONS":
-    sport_type = st.sidebar.text_input("Sport Node Type", value="Cricket")
-    pitch_profile = st.sidebar.selectbox("Tactical Ground Surface Friction", ["SLOW DUSTY TRAPS", "HUMID FLAT RUNWAYS", "HIGH-ALTITUDE BOUNCE"])
-elif industry == "GOVERNMENT_POLICY":
-    exam_year = st.sidebar.text_input("Examination Targeted Year", value="2026")
-elif industry == "DISASTER_MANAGEMENT":
-    state_selected = st.sidebar.text_input("State Zone Registry Location", value="Bagmati Province")
-elif industry == "STARTUP_FINANCIERS":
-    startup_market = st.sidebar.text_input("Market Sector Footprint Niche", value="Quick-Commerce / India")
-    burn_trap = st.sidebar.selectbox("Capital Burn Instability Trap Profile", ["CAC Inflation Trap", "Dark Store Overheads", "Organic User Churn"])
-
-st.sidebar.write("---")
-st.sidebar.header("🗣️ Raw Behavioral Object Ingest")
-actual_observation = st.sidebar.text_area("OBJECT A: What did the subject ACTUALLY say/do?", value="Subject quietly pocketed candidate leaflet, refused to join the public shouting circle, and walked straight back to an un-mapped agrarian block corridor.")
-worker_interpretation = st.sidebar.text_area("OBJECT B: What did the field worker INTERPRET?", value="Everyone is praising Candidate A with high voter enthusiasm across the entire village setup.")
-
-st.sidebar.write("---")
-st.sidebar.header("🎚️ Data Volatility Signals")
+st.sidebar.subheader("📡 Real-Time Telemetry Signals")
 volume = st.sidebar.slider("Incoming Data Volume Ingest Registry", 1000, 500000, 150000, step=5000)
+noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 1.0, 0.35, step=0.05)
 
 
 # ==============================================================================
-#                 🧠 PRODUCTION LAYER I: SEPARATE OBJECT HASHING
+#                 📥 CENTER MAIN CORE STATE STAGE: METADATA & PROVENANCE
 # ==============================================================================
 
-def execute_deterministic_hash(text_string):
-    if not text_string:
-        return 0.5
-    char_sum = sum(ord(char) for char in text_string)
-    return 0.70 + ((char_sum % 45) / 100.0)
+# Organize the setup metadata neatly on screen into visual tabs
+setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
 
-# Calculate distinct mathematical objects for Observation and Interpretation
-actual_deed_hash = execute_deterministic_hash(actual_observation)
-field_worker_hash = execute_deterministic_hash(worker_interpretation)
-instance_name_hash = execute_deterministic_hash(target_name)
+with setup_tab1:
+    st.markdown("#### Configure Asset DNA Parameters")
+    if industry == "ELECTIONS":
+        meta_col1, meta_col2, meta_col3 = st.columns(3)
+        with meta_col1:
+            target_name = st.text_input("State / Region Node Name", value="Andhra Pradesh")
+            party_selected = st.text_input("Target Political Party String", value="TVK")
+        with meta_col2:
+            election_type = st.selectbox("Election Classification Type", ["Assembly Elections", "Lok Sabha Elections", "Bypoll Matrix"])
+            number_of_seats = st.slider("Total Number of Seats in State Landscape", 10, 545, 175, step=1)
+        with meta_col3:
+            election_year = st.text_input("Election Cycle Target Year", value="2026")
+            constituency_name = st.text_input("Target Focus Constituency Name", value="Visakhapatnam South")
+            
+        inner_col1, inner_col2 = st.columns(2)
+        with inner_col1:
+            const_profile = st.selectbox("Constituency Demographic Core Profile", ["URBAN", "RURAL", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
+        with inner_col2:
+            state_profile = st.selectbox("Overall State Geographical Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
+        context_focus = f"State: {target_name} | Party: {party_selected} | Year: {election_year} | Const Profile: {const_profile}"
 
-# Calculate the critical Epistemic Divergence Index (EDI) between Object A and Object B
-epistemic_divergence_index = abs(actual_deed_hash - field_worker_hash)
+    elif industry == "MEDIA_MOVIES":
+        meta_col1, meta_col2, meta_col3 = st.columns(3)
+        with meta_col1:
+            target_name = st.text_input("Movie Production Title String", value="Varanasi")
+            production_house = st.text_input("Production Banner Identity", value="Vyjayanthi Movies")
+        with meta_col2:
+            director_name = st.text_input("Director Core String Name", value="Nag Ashwin")
+            movie_budget = st.slider("Allocated Production Budget (₹ Crore)", 10, 600, 250, step=5)
+        with meta_col3:
+            hero_name = st.text_input("Lead Hero Identity Name Asset", value="Mahesh Babu")
+            number_of_screens = st.slider("Number of Screens Deployed Globally", 100, 15000, 4500, step=50)
+            
+        inner_col1, inner_col2 = st.columns(2)
+        with inner_col1:
+            movie_lang = st.selectbox("Primary Audio Language Deployment", ["TELUGU", "TAMIL", "KANNADA", "MALAYALAM", "HINDI", "ENGLISH", "MULTI LINGUAL"])
+        with inner_col2:
+            movie_scale = st.selectbox("Release Scale Strategy Footprint", ["REGIONAL", "PAN INDIA", "GLOBAL"])
+        context_focus = f"Lang: {movie_lang} | Scale: {movie_scale} | Screens: {number_of_screens}"
+
+    elif industry == "SPORTS_AUCTIONS":
+        meta_col1, meta_col2 = st.columns(2)
+        with meta_col1:
+            target_name = st.text_input("Country Node Hub Geography", value="India")
+            sport_type = st.text_input("Sport Classification Node", value="Cricket")
+            match_versus = st.text_input("Match Billing Entry (X vs Y Matrix)", value="India vs Australia")
+        with meta_col2:
+            arena_stadium = st.text_input("Stadium / Ground Arena Infrastructure Name", value="Narendra Modi Stadium, Ahmedabad")
+            weather_month = st.selectbox("Target Month (Weather Calibration Loop)", ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+            region_geography = st.selectbox("Atmosphere Terrain Geography (Air/Humidity/Temp)", ["HIGH HUMIDITY COASTAL GRID", "DRY ARID DUST PLAINS", "HIGH-ALTITUDE THIN AIR SECTOR"])
+        context_focus = f"Match: {match_versus} | Month: {weather_month} | Geography: {region_geography}"
+
+    elif industry == "GOVERNMENT_POLICY":
+        target_name = st.text_input("Enter Competitive Exam Name", value="NEET-UG")
+        exam_year = st.text_input("Exam Year", value="2026")
+        context_focus = f"Exam Matrix: {target_name} | Target Cycle Year: {exam_year}"
+    elif industry == "DISASTER_MANAGEMENT":
+        target_name = st.text_input("Enter Disaster Type Node", value="Flash Floods")
+        state_selected = st.text_input("State Zone Registry Location", value="Bagmati Province")
+        context_focus = f"Disaster Variant: {target_name} | Base Zone: {state_selected}"
+    elif industry == "STARTUP_FINANCIERS":
+        target_name = st.text_input("Enter Startup Profile Name", value="Blinkit")
+        startup_market = st.text_input("Market Sector Footprint", value="Quick-Commerce / India")
+        burn_trap = st.selectbox("Capital Burn Instability Trap", ["CAC Inflation Trap", "Dark Store Overheads", "Organic User Churn"])
+        context_focus = f"Market Venture: {startup_market} | Risk Vector: {burn_trap}"
+
+with setup_tab2:
+    st.markdown("#### Ingest Chain of Custody Provenance Data")
+    prov_col1, prov_col2 = st.columns(2)
+    with prov_col1:
+        who_collected = st.selectbox("1. WHO COLLECTED THE FIELD INTEL?", ["Internal Intelligence Cells", "Decentralized Field Workers", "Automated Node Registry", "Third-Party Secondary Audit"])
+        how_collected = st.selectbox("2. HOW WAS IT COLLECTED BY CORE NODES?", ["Cryptographic Digital Ledger", "Physical In-Person Manifest", "Encrypted SAT-Phone Terminal", "Mesh-Network Packet Ingest"])
+        who_observed = st.text_input("3. SPECIFIC SUBJECT / TARGET DEMOGRAPHIC OBSERVED", value="Target Constituency Demographics Grid-4")
+    with prov_col2:
+        where_coordinates = st.text_input("4. SPATIAL GEOGRAPHIC COORDINATES (WHERE)", value="Visakhapatnam, Andhra Pradesh")
+        when_date = st.date_input("5. TEMPORAL TARGET DATE ANCHOR (WHEN)", value=datetime(1980, 7, 14))
+        tob_frame = st.time_input("6. TEMPORAL CLOCK ANCHOR FRAME (TOB)", value=time(0, 30, 45))
+        under_conditions = st.selectbox("7. ENVIRONMENTAL AMBIENT CONDITIONS SHIELD", ["High Environmental Volatility", "Normal Parameters", "Adversarial Infiltration Environment", "Sensor/Communication Friction Grid"])
 
 
 # ==============================================================================
-#            🛡️ PRODUCTION LAYER II: THE 7-LEVEL MATHEMATICAL TAXONOMY
+#           🛡️ CENTER MAIN MIDDLE STAGE: PANELS FOR TAXONOMICAL COGNITIVE ERRORS
 # ==============================================================================
+st.write("---")
+st.subheader("🛡️ Integrated 7-Level Ground Reality Error Taxonomy Panels")
+st.markdown("*Expand specific layers to simulate tactical ground infrastructure disruptions during the demonstration.*")
 
-# Level 1: Respondent Error Multiplier Calculation Loop
-resp_score = sum([resp_false_info, resp_hides_pref, resp_social_ans, resp_fear_conseq, resp_no_reveal, resp_no_understand, resp_fluid_ans]) * 0.1428
-# Level 2: Field-Worker Error Multiplier Calculation Loop
-fw_score = sum([fw_bias, fw_leading_q, fw_selective_choice, fw_recording_mistake, fw_interpretation_mistake, fw_translation_mistake, fw_deliberate_report]) * 0.1428
-# Level 3: Sampling Error Multiplier Calculation Loop
-samp_score = sum([samp_wrong_unit, samp_wrong_home, samp_overrep, samp_underrep, samp_low_size, samp_repeat, samp_excluded]) * 0.1428
-# Level 4: Political/Environmental Error Multiplier Calculation Loop
-env_score = sum([env_voter_fear, env_local_pressure, env_intimidation, env_temp_events, env_crowd_mirage, env_party_influence, env_leader_influence]) * 0.1428
-# Level 5: Temporal Error Multiplier Calculation Loop
-temp_score = sum([temp_too_early, temp_immediate, temp_volatile_drift, temp_stale_report]) * 0.25
-# Level 6: Geographic Error Multiplier Calculation Loop
-geo_score = sum([geo_const_mismatch, geo_urban_mismatch, geo_booth_mismatch, geo_border_drift]) * 0.25
-# Level 7: Human Interpretation Error Multiplier (Direct EDI function)
-human_interpretation_score = epistemic_divergence_index * 1.25
+# Clear visual layout panels to avoid an overwhelming vertical scrolling experience
+with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion Matrix", expanded=False):
+    exp_col1, exp_col2 = st.columns(2)
+    with exp_col1:
+        st.markdown("**Level-1 Respondent Errors:**")
+        r1 = st.checkbox("Intentionally gives false information")
+        r2 = st.checkbox("Hides actual preference", value=True)
+        r3 = st.checkbox("Gives socially acceptable answer")
+        r4 = st.checkbox("Fear of local political consequences")
+        r5 = st.checkbox("Doesn't want to reveal voting intention")
+        r6 = st.checkbox("Doesn't understand the question")
+        r7 = st.checkbox("Changes answer depending on who asks")
+    with exp_col2:
+        st.markdown("**Level-2 Field-Worker Errors:**")
+        f1 = st.checkbox("Interviewer bias")
+        f2 = st.checkbox("Leading questions")
+        f3 = st.checkbox("Selective respondent choice")
+        f4 = st.checkbox("Recording mistakes")
+        f5 = st.checkbox("Interpretation mistakes", value=True)
+        f6 = st.checkbox("Translation mistakes")
+        f7 = st.checkbox("Deliberately reporting preferred narrative")
 
-# Cumulative Taxonomical System Fragmentation Metric Calculation
-cumulative_taxonomical_corruption = (resp_score + fw_score + samp_score + env_score + temp_score + geo_score + human_interpretation_score) / 7.0
-cumulative_taxonomical_corruption = min(0.98, max(0.02, cumulative_taxonomical_corruption))
-
-
-# ==============================================================================
-#                 🔮 PRODUCTION LAYER III: THE SAPTABHAṄGĪ MATRIX CORE
-# ==============================================================================
-
-quarantine_threshold = 0.45
-is_system_compromised = cumulative_taxonomical_corruption > quarantine_threshold
-
-if is_system_compromised:
-    engine_state = "Syad_Avaktavyam"  # Indescribable / High Corruption / Block Projections
+with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental Pressures", expanded=False):
+    exp_col3, exp_col4 = st.columns(2)
+    with exp_col3:
+        st.markdown("**Level-3 Sampling Errors:**")
+        s1 = st.checkbox("Wrong village/ward selected")
