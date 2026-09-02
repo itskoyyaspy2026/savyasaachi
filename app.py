@@ -5,13 +5,14 @@ import math
 import uuid
 from datetime import datetime, time
 
-# --- INITIAL APP SETUP & THEME PROFILE ---
+# --- STYLISH ENTERPRISE UI BRANDING ENHANCEMENTS ---
 st.set_page_config(page_title="SAVYASAACHI Executive Engine", page_icon="🏛️", layout="wide")
 
-# Custom CSS injector to give it a polished, high-fidelity dark-terminal aesthetic
+# Custom CSS injector to establish a high-fidelity dark-terminal dashboard aesthetic
 st.markdown("""
     <style>
         .main { background-color: #0d1117; color: #c9d1d9; }
+        document { background-color: #0d1117; }
         div.stButton > button:first-child {
             background-color: #238636; color: white; border-radius: 6px; 
             border: 1px solid rgba(240,240,240,0.2); width: 100%; height: 3em; font-weight: bold;
@@ -23,11 +24,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🎯 SAVYASAACHI Enterprise Truth Engine")
+st.title("🏛️ SAVYASAACHI Enterprise Truth Engine")
 st.markdown("🔒 *PaaS Level-1.0 Production Instance | Multi-Vertical Epistemic Risk & Saptabhaṅgī Matrix Engine*")
 st.write("---")
 
-# --- CONTROL SIDEBAR CONFIGURATIONS ---
+# --- CONTROL PANEL SIDEBAR ---
 st.sidebar.header("🎛️ Master Control Panel")
 industry = st.sidebar.selectbox(
     "Select Target Industry Vertical", 
@@ -35,16 +36,15 @@ industry = st.sidebar.selectbox(
 )
 
 st.sidebar.write("---")
-st.sidebar.header("📡 Real-Time Telemetry Signals")
+st.sidebar.subheader("📡 Real-Time Telemetry Signals")
 volume = st.sidebar.slider("Incoming Data Volume Ingest Registry", 1000, 500000, 150000, step=5000)
 noise_slider = st.sidebar.slider("Ambient Cyber / Cloud Distortion Score", 0.0, 1.0, 0.35, step=0.05)
 
 
 # ==============================================================================
-#                 📥 CENTER MAIN CORE STATE STAGE: METADATA & PROVENANCE
+#                 📥 LAYER 1: METADATA EXTRA ATTRIBUTES & PROVENANCE
 # ==============================================================================
 
-# Organize the setup metadata neatly on screen into visual tabs
 setup_tab1, setup_tab2 = st.tabs(["📝 Industry Variant Attributes", "🔍 Ground Observation Provenance"])
 
 with setup_tab1:
@@ -66,7 +66,7 @@ with setup_tab1:
             const_profile = st.selectbox("Constituency Demographic Core Profile", ["URBAN", "RURAL", "SEMI RURAL", "BC POPULATED", "SC POPULATED", "TRIBAL"])
         with inner_col2:
             state_profile = st.selectbox("Overall State Geographic Dominance Profile", ["urban", "rural", "semi rural", "bc populated", "sc populated", "tribal"])
-        context_focus = f"State: {target_name} | Party: {party_selected} | Year: {election_year} | Const Profile: {const_profile}"
+        context_focus = f"State: {target_name} | Party: {party_selected} | Year: {election_year} | Profile: {const_profile}"
 
     elif industry == "MEDIA_MOVIES":
         meta_col1, meta_col2, meta_col3 = st.columns(3)
@@ -128,11 +128,11 @@ with setup_tab2:
 
 
 # ==============================================================================
-#           🛡️ CENTER MAIN MIDDLE STAGE: PANELS FOR TAXONOMICAL COGNITIVE ERRORS
+#           🛡️ LAYER 2: CHANNELS FOR THE 7-LEVEL RE-WEIGHTING TAXONOMY
 # ==============================================================================
 st.write("---")
 st.subheader("🛡️ Integrated 7-Level Ground Reality Error Taxonomy Panels")
-st.markdown("*Expand specific layers to simulate tactical ground infrastructure disruptions during the demonstration.*")
+st.markdown("*Expand panels to layer custom strategic ground friction during presentation runs.*")
 
 with st.expander("📂 Levels 1 & 2: Respondent Bias & Field-Worker Distortion Matrix", expanded=False):
     exp_col1, exp_col2 = st.columns(2)
@@ -162,3 +162,4 @@ with st.expander("📂 Levels 3 & 4: Sampling Deficits & Political Environmental
         s1 = st.checkbox("Wrong village/ward selected")
         s2 = st.checkbox("Wrong households selected")
         s3 = st.checkbox("Certain communities overrepresented")
+        s4 = st.checkbox("Certain communities missed")
